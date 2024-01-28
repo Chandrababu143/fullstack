@@ -1,0 +1,316 @@
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++-------------------------------+
+| Database                      |
++-------------------------------+
+| busdetails                    |
+| college                       |
+| e_commerce                    |
+| employee_details              |
+| hotel_management_organization |
+| information_schema            |
+| moodletask1                   |
+| mysql                         |
+| performance_schema            |
+| sakila                        |
+| sys                           |
+| world                         |
++-------------------------------+
+12 rows in set (0.01 sec)
+
+mysql> use employee_details;
+Database changed
+mysql> show tables;
++----------------------------+
+| Tables_in_employee_details |
++----------------------------+
+| dept                       |
+| emp                        |
+| salary                     |
++----------------------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+---------------------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno | emailid             |
++-------+--------+-----------+------+------------+---------+---------+--------+---------------------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 | SMITERK@kggroup.com |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | ALLEMAN@kggroup.com |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | WARDMAN@kggroup.com |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | JONEGER@kggroup.com |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | MARTMAN@kggroup.com |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | BLAKGER@kggroup.com |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | CLARGER@kggroup.com |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | SCOTYST@kggroup.com |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | KINGENT@kggroup.com |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | TURNMAN@kggroup.com |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | ADAMERK@kggroup.com |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 | JAMEERK@kggroup.com |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | FORDYST@kggroup.com |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | MILLERK@kggroup.com |
++-------+--------+-----------+------+------------+---------+---------+--------+---------------------+
+14 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select ename,job,sal,dname,deptno from emp,dept
+    -> on emp.deptno=dept.deptno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on emp.deptno=dept.deptno' at line 2
+mysql> select ename,job,sal,dname,deptno from emp inner join dept
+    -> on emp.deptno=dept.deptno;
+ERROR 1052 (23000): Column 'deptno' in field list is ambiguous
+mysql> select e.ename,e.job,e.sal,d.dname,d.deptno from emp e join dept d
+    -> using (deptno);
++--------+-----------+---------+------------+--------+
+| ename  | job       | sal     | dname      | deptno |
++--------+-----------+---------+------------+--------+
+| SMITH  | CLERK     |  800.00 | RESEARCH   |     20 |
+| ALLEN  | SALESMAN  | 1600.00 | SALES      |     30 |
+| WARD   | SALESMAN  | 1250.00 | SALES      |     30 |
+| JONES  | MANAGER   | 2975.00 | RESEARCH   |     20 |
+| MARTIN | SALESMAN  | 1250.00 | SALES      |     30 |
+| BLAKE  | MANAGER   | 2850.00 | SALES      |     30 |
+| CLARK  | MANAGER   | 2450.00 | ACCOUNTING |     10 |
+| SCOTT  | ANALYST   | 3000.00 | RESEARCH   |     20 |
+| KING   | PRESIDENT | 5000.00 | ACCOUNTING |     10 |
+| TURNER | SALESMAN  | 1500.00 | SALES      |     30 |
+| ADAMS  | CLERK     | 1100.00 | RESEARCH   |     20 |
+| JAMES  | CLERK     |  950.00 | SALES      |     30 |
+| FORD   | ANALYST   | 3000.00 | RESEARCH   |     20 |
+| MILLER | CLERK     | 1300.00 | ACCOUNTING |     10 |
++--------+-----------+---------+------------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select job,loc from emp,dept
+    -> where emp.deptno=dept.deptno and loc='dallas';
++---------+--------+
+| job     | loc    |
++---------+--------+
+| CLERK   | DALLAS |
+| MANAGER | DALLAS |
+| ANALYST | DALLAS |
+| CLERK   | DALLAS |
+| ANALYST | DALLAS |
++---------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from salary;
++---------+-------+----------+
+| salfrom | salto | salgrade |
++---------+-------+----------+
+|    4000 |  5000 | A        |
+|    3000 |  3999 | B        |
+|    2000 |  2999 | C        |
+|       0 |  1999 | d        |
++---------+-------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select ename,job,sal,salgrade from emp,salary
+    -> where sal between salfrom and salto;
++--------+-----------+---------+----------+
+| ename  | job       | sal     | salgrade |
++--------+-----------+---------+----------+
+| SMITH  | CLERK     |  800.00 | d        |
+| ALLEN  | SALESMAN  | 1600.00 | d        |
+| WARD   | SALESMAN  | 1250.00 | d        |
+| JONES  | MANAGER   | 2975.00 | C        |
+| MARTIN | SALESMAN  | 1250.00 | d        |
+| BLAKE  | MANAGER   | 2850.00 | C        |
+| CLARK  | MANAGER   | 2450.00 | C        |
+| SCOTT  | ANALYST   | 3000.00 | B        |
+| KING   | PRESIDENT | 5000.00 | A        |
+| TURNER | SALESMAN  | 1500.00 | d        |
+| ADAMS  | CLERK     | 1100.00 | d        |
+| JAMES  | CLERK     |  950.00 | d        |
+| FORD   | ANALYST   | 3000.00 | B        |
+| MILLER | CLERK     | 1300.00 | d        |
++--------+-----------+---------+----------+
+14 rows in set (0.00 sec)
+
+mysql> select dname,count(ename) from dept,emp
+    -> where emp.deptno=dept.deptno 
+    -> group by ename;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'employee_details.dept.dname' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select dname,count(ename) from dept,emp
+    -> where emp.deptno=dept.deptno 
+    -> group by dname;
++------------+--------------+
+| dname      | count(ename) |
++------------+--------------+
+| RESEARCH   |            5 |
+| SALES      |            6 |
+| ACCOUNTING |            3 |
++------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select empno,ename,dname,loc,salgrade from emp,dept,salary
+    -> where emp.deptno=dept.deptno 
+    -> and sal between salfrom and salto;
++-------+--------+------------+----------+----------+
+| empno | ename  | dname      | loc      | salgrade |
++-------+--------+------------+----------+----------+
+|  7839 | KING   | ACCOUNTING | NEW YORK | A        |
+|  7902 | FORD   | RESEARCH   | DALLAS   | B        |
+|  7788 | SCOTT  | RESEARCH   | DALLAS   | B        |
+|  7782 | CLARK  | ACCOUNTING | NEW YORK | C        |
+|  7698 | BLAKE  | SALES      | CHICAGO  | C        |
+|  7566 | JONES  | RESEARCH   | DALLAS   | C        |
+|  7934 | MILLER | ACCOUNTING | NEW YORK | d        |
+|  7900 | JAMES  | SALES      | CHICAGO  | d        |
+|  7876 | ADAMS  | RESEARCH   | DALLAS   | d        |
+|  7844 | TURNER | SALES      | CHICAGO  | d        |
+|  7654 | MARTIN | SALES      | CHICAGO  | d        |
+|  7521 | WARD   | SALES      | CHICAGO  | d        |
+|  7499 | ALLEN  | SALES      | CHICAGO  | d        |
+|  7369 | SMITH  | RESEARCH   | DALLAS   | d        |
++-------+--------+------------+----------+----------+
+14 rows in set (0.00 sec)
+
+mysql> display current_user();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'display current_user()' at line 1
+mysql> display currentuser();;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'display currentuser()' at line 1
+ERROR: 
+No query specified
+
+mysql> display currentuser();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'display currentuser()' at line 1
+mysql> display current_user;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'display current_user' at line 1
+mysql> select current_user;
++----------------+
+| current_user   |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select empno,ename,deptno,dname from emp,dept
+    -> where emp.deptno=dept.deptno;
+ERROR 1052 (23000): Column 'deptno' in field list is ambiguous
+mysql> select e.empno,e.ename,d.deptno,d.dname from emp e join dept d
+    -> using (deptno);
++-------+--------+--------+------------+
+| empno | ename  | deptno | dname      |
++-------+--------+--------+------------+
+|  7369 | SMITH  |     20 | RESEARCH   |
+|  7499 | ALLEN  |     30 | SALES      |
+|  7521 | WARD   |     30 | SALES      |
+|  7566 | JONES  |     20 | RESEARCH   |
+|  7654 | MARTIN |     30 | SALES      |
+|  7698 | BLAKE  |     30 | SALES      |
+|  7782 | CLARK  |     10 | ACCOUNTING |
+|  7788 | SCOTT  |     20 | RESEARCH   |
+|  7839 | KING   |     10 | ACCOUNTING |
+|  7844 | TURNER |     30 | SALES      |
+|  7876 | ADAMS  |     20 | RESEARCH   |
+|  7900 | JAMES  |     30 | SALES      |
+|  7902 | FORD   |     20 | RESEARCH   |
+|  7934 | MILLER |     10 | ACCOUNTING |
++-------+--------+--------+------------+
+14 rows in set (0.00 sec)
+
+mysql> select e.empno,e.ename,d.deptno,d.dname from emp e right join dept d
+    -> on (e.deptno=d.deptno);
++-------+--------+--------+------------+
+| empno | ename  | deptno | dname      |
++-------+--------+--------+------------+
+|  7934 | MILLER |     10 | ACCOUNTING |
+|  7839 | KING   |     10 | ACCOUNTING |
+|  7782 | CLARK  |     10 | ACCOUNTING |
+|  7902 | FORD   |     20 | RESEARCH   |
+|  7876 | ADAMS  |     20 | RESEARCH   |
+|  7788 | SCOTT  |     20 | RESEARCH   |
+|  7566 | JONES  |     20 | RESEARCH   |
+|  7369 | SMITH  |     20 | RESEARCH   |
+|  7900 | JAMES  |     30 | SALES      |
+|  7844 | TURNER |     30 | SALES      |
+|  7698 | BLAKE  |     30 | SALES      |
+|  7654 | MARTIN |     30 | SALES      |
+|  7521 | WARD   |     30 | SALES      |
+|  7499 | ALLEN  |     30 | SALES      |
+|  NULL | NULL   |     40 | OPERATIONS |
++-------+--------+--------+------------+
+15 rows in set (0.00 sec)
+
+mysql> select deptno,dname from emp right join dept 
+    -> on (emp.deptno=dept.deptno)
+    -> where count(ename)=0;
+ERROR 1052 (23000): Column 'deptno' in field list is ambiguous
+mysql> select deptno,dname from emp right join dept 
+    -> on (emp.deptno=dept.deptno)
+    -> where emp.empno is null;
+ERROR 1052 (23000): Column 'deptno' in field list is ambiguous
+mysql> select e.deptno,d.dname from emp e right join dept d
+    -> on (e.deptno=d.deptno)
+    -> where emp.empno is null;
+ERROR 1054 (42S22): Unknown column 'emp.empno' in 'where clause'
+mysql> select deptno,dname from emp right join dept 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select d.deptno,d.dname from emp e right join dept d
+    -> on (e.deptno=d.deptno) where e.empno is null;
++--------+------------+
+| deptno | dname      |
++--------+------------+
+|     40 | OPERATIONS |
++--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select e.ename,m.ename from emp e,emp m
+    -> where (e.mgr=m.empno);
++--------+-------+
+| ename  | ename |
++--------+-------+
+| FORD   | JONES |
+| SCOTT  | JONES |
+| JAMES  | BLAKE |
+| TURNER | BLAKE |
+| MARTIN | BLAKE |
+| WARD   | BLAKE |
+| ALLEN  | BLAKE |
+| MILLER | CLARK |
+| ADAMS  | SCOTT |
+| CLARK  | KING  |
+| BLAKE  | KING  |
+| JONES  | KING  |
+| SMITH  | FORD  |
++--------+-------+
+13 rows in set (0.00 sec)
+
+mysql> select d.deptno,d.dname fromfrom emp e right join dept d
+    -> on (e.deptno=d.deptno);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emp e right join dept d
+on (e.deptno=d.deptno)' at line 1
+mysql> select d.dname,count(e.ename) from emp e,dept d
+    -> where e.deptno=d.deptno
+    -> group by dname
+    -> order by count(e.ename) desc limit 1;
++-------+----------------+
+| dname | count(e.ename) |
++-------+----------------+
+| SALES |              6 |
++-------+----------------+
+1 row in set (0.00 sec)
+
+mysql> ^C
+mysql> select e.empno,e.ename,e.job,d.deptno,d.dname,d.loc from emp e right join dept d on (e.deptno=d.deptno)
+    -> where e.ename is null;
++-------+-------+------+--------+------------+--------+
+| empno | ename | job  | deptno | dname      | loc    |
++-------+-------+------+--------+------------+--------+
+|  NULL | NULL  | NULL |     40 | OPERATIONS | BOSTON |
++-------+-------+------+--------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> notee;

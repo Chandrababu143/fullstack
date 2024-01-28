@@ -1,0 +1,19 @@
+
+class localbar
+{
+void user meth()
+{
+string name="java";
+system.out.println(name);
+}
+void userDisp()
+{
+system.out.println(name):
+}
+public static void main(string ags[])
+{
+localVar lv=newLocalvar();
+lv.userMeth();
+lv.userDisp();
+}
+}

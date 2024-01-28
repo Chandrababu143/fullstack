@@ -1,0 +1,330 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 653d0ae8541e4f28e4030dce
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2
+Using MongoDB:          7.0.2
+Using Mongosh:          2.0.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-10-20T11:42:08.686+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show collections
+
+test> show collections();
+MongoshInvalidInputError: [COMMON-10001] 'collections()' is not a valid argument for "show".
+test> show dbs
+admin    40.00 KiB
+config   60.00 KiB
+local    40.00 KiB
+mystore  80.00 KiB
+test> use sample
+switched to db sample
+sample> db.createCollection("studentTable");
+{ ok: 1 }
+sample> db.studentTable.insertOne({name:"Praveen",age:20,score:98.7})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653d0c08541e4f28e4030dcf")
+}
+sample> db.studentTable.find();
+[
+  {
+    _id: ObjectId("653d0c08541e4f28e4030dcf"),
+    name: 'Praveen',
+    age: 20,
+    score: 98.7
+  }
+sample> db.customer.insertOne({_id:01,customerid:1,first_name:"Praveen",last_name:"R",dob:"17/12/2002",address:".....",phone_number:9988776655})
+{ acknowledged: true, insertedId: 1 }
+sample> db.customer.find()
+[
+  {
+    _id: 1,
+    customerid: 1,
+    first_name: 'Praveen',
+    last_name: 'R',
+    dob: '17/12/2002',
+    address: '.....',
+    phone_number: 9988776655
+  }
+]
+sample> db.customer.insertMany({_id:02,customerid:2,first_name:"kavin",last_sample> db.customer.insertMany({_id:02,customerid:2,first_name:"kavin",last_name:"A",dob:"18/01/2000",address:"......",phone_number:9876543210},{_id:03,customerid:3,first_name:"Pavin",last_name:"B",dob:"18/02/2000",address:"......",phone_number:9876543211},{_id:04,customerid:4,first_name:"Ram",last_name:"k",dob:"18/08/2000",address:"......",phone_number:9876543212},{_id:05,customerid:5,first_name:"King",last_name:"l",dob:"18/06/2000",address:"......",phone_number:9876543215},{_id:06,customerid:6,first_name:"kain",last_name:"A",dob:"18/09/2000",address:"......",phone_number:9876543275});
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+sample> db.customer.insertMany({_id:02,customerid:2,first_name:"kavin",last_name:"A",dob:"18/01/2000",address:"......",phone_number:9876543210}),({_id:03,customerid:3,first_name:"Pavin",last_name:"B",dob:"18/02/2000",address:"......",phone_number:9876543211}),({_id:04,customerid:4,first_name:"Ram",last_name:"k",dob:"18/08/2000",address:"......",phone_number:9876543212}),({_id:05,customerid:5,first_name:"King",last_name:"l",dob:"18/06/2000",address:"......",phone_number:9876543215}),({_id:06,customerid:6,first_name:"kain",last_name:"A",dob:"18/09/2000",address:"......",phone_number:9876543275});
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+sample> db.customer.insertMany({_id:02,customerid:2,first_name:"kavin",last_name:"A",dob:"18/01/2000",address:"......",phone_number:9876543210}{_id:03,customerid:3,first_name:"Pavin",last_name:"B",dob:"18/02/2000",address:"......",phone_number:9876543211}{_id:04,customerid:4,first_name:"Ram",last_name:"k",dob:"18/08/2000",address:"......",phone_number:9876543212}{_id:05,customerid:5,first_name:"King",last_name:"l",dob:"18/06/2000",address:"......",phone_number:9876543215}{_id:06,customerid:6,first_name:"kain",last_name:"A",dob:"18/09/2000",address:"......",phone_number:9876543275});
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:135)
+
+> 1 | db.customer.insertMany({_id:02,customerid:2,first_name:"kavin",last_name:"A",dob:"18/01/2000",address:"......",phone_number:9876543210}{_id:03,customerid:3,first_name:"Pavin",last_name:"B",dob:"18/02/2000",address:"......",phone_number:9876543211}{_id:04,customerid:4,first_name:"Ram",last_name:"k",dob:"18/08/2000",address:"......",phone_number:9876543212}{_id:05,customerid:5,first_name:"King",last_name:"l",dob:"18/06/2000",address:"......",phone_number:9876543215}{_id:06,customerid:6,first_name:"kain",last_name:"A",dob:"18/09/2000",address:"......",phone_number:9876543275});
+    |
+                                                                 ^
+  2 |
+
+sample> db.customer.insertMany([{_id:02,customerid:2,first_name:"kavin",last_name:"A",dob:"18/01/2000",address:"......",phone_number:9876543210},{_id:03,customerid:3,first_name:"Pavin",last_name:"B",dob:"18/02/2000",address:"......",phone_number:9876543211},{_id:04,customerid:4,first_name:"Ram",last_name:"k",dob:"18/08/2000",address:"......",phone_number:9876543212},{_id:05,customerid:5,first_name:"King",last_name:"l",dob:"18/06/2000",address:"......",phone_number:9876543215},{_id:06,customerid:6,first_name:"kain",last_name:"A",dob:"18/09/2000",address:"......",phone_number:9876543275}]);
+{
+  acknowledged: true,
+  insertedIds: { '0': 2, '1': 3, '2': 4, '3': 5, '4': 6 }
+}
+sample> db.customer.find()
+[
+  {
+    _id: 1,
+    customerid: 1,
+    first_name: 'Praveen',
+    last_name: 'R',
+    dob: '17/12/2002',
+    address: '.....',
+    phone_number: 9988776655
+  },
+  {
+    _id: 2,
+    customerid: 2,
+    first_name: 'kavin',
+    last_name: 'A',
+    dob: '18/01/2000',
+    address: '......',
+    phone_number: 9876543210
+  },
+  {
+    _id: 3,
+    customerid: 3,
+    first_name: 'Pavin',
+    last_name: 'B',
+    dob: '18/02/2000',
+    address: '......',
+    phone_number: 9876543211
+  },
+  {
+    _id: 4,
+    customerid: 4,
+    first_name: 'Ram',
+    last_name: 'k',
+    dob: '18/08/2000',
+    address: '......',
+    phone_number: 9876543212
+  },
+  {
+    _id: 5,
+    customerid: 5,
+    first_name: 'King',
+    last_name: 'l',
+    dob: '18/06/2000',
+    address: '......',
+    phone_number: 9876543215
+  },
+  {
+    _id: 6,
+    customerid: 6,
+    first_name: 'kain',
+    last_name: 'A',
+    dob: '18/09/2000',
+    address: '......',
+    phone_number: 9876543275
+  }
+]
+sample> db.createCollection("order_det")
+{ ok: 1 }
+sample> db.order_det.insertMany([{orderid:1,customerid:1,order_datetime:Datesample> db.order_det.insertMany([{orderid:1,customerid:1,order_datetime:Date(2023-12-12),shipped_date:Date(2023-12-12),total_amount:1000.92},{orderid:2,customerid:2,order_datetime:Date(2023-12-12),shipped_date:Date(2023-12-12),total_amount:100.92},{orderid:3,customerid:3,order_datetime:Date(2023-12-12),shipped_date:Date(2023-12-12),total_amount:8000.92},{orderid:4,customerid:4,order_datetime:Date(2023-12-12),shipped_date:Date(2023-12-12),total_amount:8999.92},{orderid:5,customerid:5,order_datetime:Date(2023-12-12),shipped_date:Date(2023-12-12),total_amount:1000.92},{orderid:6,customerid:6,order_datetime:Date(2023-12-12),shipped_date:Date(2023-12-12),total_amount:101989.92}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("653d1223541e4f28e4030dd0"),
+    '1': ObjectId("653d1223541e4f28e4030dd1"),
+    '2': ObjectId("653d1223541e4f28e4030dd2"),
+    '3': ObjectId("653d1223541e4f28e4030dd3"),
+    '4': ObjectId("653d1223541e4f28e4030dd4"),
+    '5': ObjectId("653d1223541e4f28e4030dd5")
+  }
+}
+sample> db.studentTable.find().pretty()
+[
+  {
+    _id: ObjectId("653d0c08541e4f28e4030dcf"),
+    name: 'Praveen',
+    age: 20,
+    score: 98.7
+  }
+]
+sample> db.customer.find().pretty()
+[
+  {
+    _id: 1,
+    customerid: 1,
+    first_name: 'Praveen',
+    last_name: 'R',
+    dob: '17/12/2002',
+    address: '.....',
+    phone_number: 9988776655
+  },
+  {
+    _id: 2,
+    customerid: 2,
+    first_name: 'kavin',
+    last_name: 'A',
+    dob: '18/01/2000',
+    address: '......',
+    phone_number: 9876543210
+  },
+  {
+    _id: 3,
+    customerid: 3,
+    first_name: 'Pavin',
+    last_name: 'B',
+    dob: '18/02/2000',
+    address: '......',
+    phone_number: 9876543211
+  },
+  {
+    _id: 4,
+    customerid: 4,
+    first_name: 'Ram',
+    last_name: 'k',
+    dob: '18/08/2000',
+    address: '......',
+    phone_number: 9876543212
+  },
+  {
+    _id: 5,
+    customerid: 5,
+    first_name: 'King',
+    last_name: 'l',
+    dob: '18/06/2000',
+    address: '......',
+    phone_number: 9876543215
+  },
+  {
+    _id: 6,
+    customerid: 6,
+    first_name: 'kain',
+    last_name: 'A',
+    dob: '18/09/2000',
+    address: '......',
+    phone_number: 9876543275
+  }
+]
+sample> db.order_dat.find().pretty()
+
+sample> db.order_det.find().pretty()
+[
+  {
+    _id: ObjectId("653d1223541e4f28e4030dd0"),
+    orderid: 1,
+    customerid: 1,
+    order_datetime: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    shipped_date: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    total_amount: 1000.92
+  },
+  {
+    _id: ObjectId("653d1223541e4f28e4030dd1"),
+    orderid: 2,
+    customerid: 2,
+    order_datetime: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    shipped_date: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    total_amount: 100.92
+  },
+  {
+    _id: ObjectId("653d1223541e4f28e4030dd2"),
+    orderid: 3,
+    customerid: 3,
+    order_datetime: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    shipped_date: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    total_amount: 8000.92
+  },
+  {
+    _id: ObjectId("653d1223541e4f28e4030dd3"),
+    orderid: 4,
+    customerid: 4,
+    order_datetime: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    shipped_date: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    total_amount: 8999.92
+  },
+  {
+    _id: ObjectId("653d1223541e4f28e4030dd4"),
+    orderid: 5,
+    customerid: 5,
+    order_datetime: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    shipped_date: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    total_amount: 1000.92
+  },
+  {
+    _id: ObjectId("653d1223541e4f28e4030dd5"),
+    orderid: 6,
+    customerid: 6,
+    order_datetime: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    shipped_date: 'Sat Oct 28 2023 19:22:35 GMT+0530 (India Standard Time)',
+    total_amount: 101989.92
+  }
+]
+sample> use employee
+switched to db employee
+employee> db.createCollection("emp_det")
+{ ok: 1 }
+employee> db.emp_det([{name:"john",number:1},{{name:"jorden",number:2},{name:"king",number:3},{name:"queen",number:4},{name:"prince",number:5}])
+Uncaught:
+SyntaxError: Unexpected token (1:36)
+
+> 1 | db.emp_det([{name:"john",number:1},{{name:"jorden",number:2},{name:"king",number:3},{name:"queen",number:4},{name:"prince",number:5}])
+    |                                     ^
+  2 |
+
+employee> db.emp_det([{name:"john",number:1},{name:"jorden",number:2},{name:"king",number:3},{name:"queen",number:4},{name:"prince",number:5}])
+TypeError: db.emp_det is not a function
+employee> db.emp_det.insertMany([{name:"john",number:1},{name:"jorden",number:2},{name:"king",number:3},{name:"queen",number:4},{name:"prince",number:5}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("653d13e6541e4f28e4030dd6"),
+    '1': ObjectId("653d13e6541e4f28e4030dd7"),
+    '2': ObjectId("653d13e6541e4f28e4030dd8"),
+    '3': ObjectId("653d13e6541e4f28e4030dd9"),
+    '4': ObjectId("653d13e6541e4f28e4030dda")
+  }
+}
+employee> db.emp_det.find()
+[
+  {
+    _id: ObjectId("653d13e6541e4f28e4030dd6"),
+    name: 'john',
+    number: 1
+  },
+  {
+    _id: ObjectId("653d13e6541e4f28e4030dd7"),
+    name: 'jorden',
+    number: 2
+  },
+  {
+    _id: ObjectId("653d13e6541e4f28e4030dd8"),
+    name: 'king',
+    number: 3
+  },
+  {
+    _id: ObjectId("653d13e6541e4f28e4030dd9"),
+    name: 'queen',
+    number: 4
+  },
+  {
+    _id: ObjectId("653d13e6541e4f28e4030dda"),
+    name: 'prince',
+    number: 5
+  }
+]
+employee> show collections
+\emp_det
+employee> db.emp_det.drop()
+true
+employee> show collections
+
+employee> db.dropDatabase()
+{ ok: 1, dropped: 'employee' }
+employee> show dbs;
+admin     40.00 KiB
+config   108.00 KiB
+local     40.00 KiB
+mystore   80.00 KiB
+sample   152.00 KiB
+employee>

@@ -1,0 +1,118 @@
+mysql> show databases
+    -> ;
++-------------------------------+
+| Database                      |
++-------------------------------+
+| busdetails                    |
+| college                       |
+| e_commerce                    |
+| employee_details              |
+| hotel_management_organization |
+| information_schema            |
+| moodletask1                   |
+| mysql                         |
+| performance_schema            |
+| sakila                        |
+| sys                           |
+| world                         |
++-------------------------------+
+12 rows in set (0.01 sec)
+
+mysql> use moodletask1;
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_moodletask1 |
++-----------------------+
+| customer              |
+| marks                 |
+| order_detaila         |
++-----------------------+
+3 rows in set (0.01 sec)
+
+mysql> create table sailor(sid int primary key,name varchar(50) not null,dob date not null,gender enum('M','F') not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc sailor;
++--------+---------------+------+-----+---------+-------+
+| Field  | Type          | Null | Key | Default | Extra |
++--------+---------------+------+-----+---------+-------+
+| sid    | int           | NO   | PRI | NULL    |       |
+| name   | varchar(50)   | NO   |     | NULL    |       |
+| dob    | date          | NO   |     | NULL    |       |
+| gender | enum('M','F') | NO   |     | NULL    |       |
++--------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table boat(bid int primary key,btype enum('D','S'),bname varchar(50) unique,color varchar(50));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc boat;
++-------+---------------+------+-----+---------+-------+
+| Field | Type          | Null | Key | Default | Extra |
++-------+---------------+------+-----+---------+-------+
+| bid   | int           | NO   | PRI | NULL    |       |
+| btype | enum('D','S') | YES  |     | NULL    |       |
+| bname | varchar(50)   | YES  | UNI | NULL    |       |
+| color | varchar(50)   | YES  |     | NULL    |       |
++-------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table sails(sid int references sailor(sid),bid int references boat(bid),dot date,shift enum('FN','AN'));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc sails;
++-------+-----------------+------+-----+---------+-------+
+| Field | Type            | Null | Key | Default | Extra |
++-------+-----------------+------+-----+---------+-------+
+| sid   | int             | YES  |     | NULL    |       |
+| bid   | int             | YES  |     | NULL    |       |
+| dot   | date            | YES  |     | NULL    |       |
+| shift | enum('FN','AN') | YES  |     | NULL    |       |
++-------+-----------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into sailor(01,'ram','2023-03-28','M'),(02,'ragu','2003-09-28','M');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '01,'ram','2023-03-28','M'),(02,'ragu','2003-09-28','M')' at line 1
+mysql> insert into sailor values(01,'ram','2023-03-28','M'),(02,'ragu','2003-09-28','M');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into boat values(101,'s','flayer','red'),(101,'d','eagel','blue');
+ERROR 1062 (23000): Duplicate entry '101' for key 'boat.PRIMARY'
+mysql> insert into boat values(101,'s','flayer','red'),(102,'d','eagel','blue');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into sails values(01,101,curdate(),'AN'),(02,102,curdate(),'FN');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select*from sailor;
++-----+------+------------+--------+
+| sid | name | dob        | gender |
++-----+------+------------+--------+
+|   1 | ram  | 2023-03-28 | M      |
+|   2 | ragu | 2003-09-28 | M      |
++-----+------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select*from boat;
++-----+-------+--------+-------+
+| bid | btype | bname  | color |
++-----+-------+--------+-------+
+| 101 | S     | flayer | red   |
+| 102 | D     | eagel  | blue  |
++-----+-------+--------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select*from sails;
++------+------+------------+-------+
+| sid  | bid  | dot        | shift |
++------+------+------------+-------+
+|    1 |  101 | 2023-10-14 | AN    |
+|    2 |  102 | 2023-10-14 | FN    |
++------+------+------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> notee

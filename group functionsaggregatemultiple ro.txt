@@ -1,0 +1,324 @@
+group functions/aggregate/multiple row functions
+  Act on set or group of rows and return one result per set or group.
+        
+          TYPES:
+               1)count.
+               2)Min
+               3)Max
+               4)Sum
+               5)Avg
+  Accept only one argument can be nested to two levels automatically ignore null values
+
+     1)find the no of employees select count(ename)from emp;
+         select count(*)from emp;
+     2)find the maximum ,minimum,average and total salary paid.
+
+         select max(sal),min(sal),avg(sal),sum(sal) from emp;
+     3)find the hiredate of junior most employee
+
+        select max(hiredate)from emp;
+     4)find the total salary paid to clerks.
+        select sum(sal)from emo;
+         where job='CLERK';
+     5)find the no of salesman working in deptno 30 
+        select count(ename)from emp
+          where deptno=30 and job='SALESMAN';
+     6)diplay the no of departments available in emp table 
+         select count(distinct deptno)from emp;
+
+     Group by clause:used to group identical records
+              SYNTAX:group by column name(s)
+
+     7)display the no of employees in each dept.
+        select deptno,count(ename)from emp
+          group by deptno;
+
+     8)display the no of employees in each dept in each job category.
+        select deptno,job,count(ename)from emp
+          group by deptno,job;
+
+     9)display the no of employees in deptno 20 in each job category.
+        select deptno,job,count(ename)from emp
+          where deptno=20
+           group by deptno,job;
+
+     10)display the no of employees in deptno 20 in each job category with two or more employees.arrange your  output in ascending order of job.
+         HAVING CLAUSE:used to restrict the output after grouping
+             select deptno,job,count(ename)from emp
+               where deptno=20
+               group by deptno,job
+               having count(ename)>=2
+               order by job;
+
+       structure of SELECT statement
+        SELECT:statement
+             *| column list,expression,functions
+            FROM clause
+               table name(s)
+        WHERE clause:used to restrict the output before grouping
+             columnnames/single row functions---conditions
+        GROUP BY claue:used to group identical records
+                    column names
+        HAVING clause:used to restrict the output after grouping
+               group functions---conditions
+        ORDER BY clause:used to sort the output
+                columnnames,alis names
+
+        subquery
+            
+             query within a query or nested query
+             can be used in where clause,create table,insert,update,delete 
+        parts of a query
+             1)outer query or main query:gives the actual output.
+             2)inner query/sub query:used to find the unknown values
+                enclose the sub query within parenthesis.
+                the inner query can return rows frpm different tables.
+
+       first the inner query  will be executed.based on the result of the inner query,the outer query will be executed
+
+
+       find the employees who work with smith in the same dept.
+         select*from emp
+                   where deptno
+
+
+
+       find the  details employees who had joined before martrin.
+            select*from emp
+               where hiredate <(seklect hiredate from emp where ename='MARTIN');
+
+
+
+        find the details of the employees who earn more than scott
+
+             types of sub query
+                 1)single row subquery:inner query will return only one row
+                       use=,>,>=,<,<=,!=opertors
+
+                 2)multiple row sub query:inner query will return more than one row.
+                                   use multiple row opertors
+                                  IN:matching records in the set of values
+                                    >ANY : greater than the minimum value
+                                    <ANY : lesser than the maximum value returned by the subquery
+                                    >ALL : greater than the maximum value
+                                    <ALL : lesser than the minimum value
+     
+         find the details of the employees who earn same salary as scott
+              select*from emp
+                  where sal in(select sal from emp where ename='SCOTT');
+
+         find the details of the employees working in NEW YORK
+
+              select*from emp
+                 ->where deptno=(select deptno from dept where loc='NEW YORK');
+
+
+
+         find the details of the employees working in chicago and earn more than miller.
+                 select*from emp
+                         where deptno=(select deptno from dept where loc='CHICAGO')
+                         and sal>(select sal from emp where ename='MILLER');
+
+
+  joins:reading records from multiple table.
+
+  find the ename,job and dname of all employees.
+   Types:
+         1)cross join or cartesian product
+                 rows of one table will be matched with all the rows of the other table 
+                 formed when a join condition is omitted or invalid.
+
+       select ename,job,dname from emp,dept;
+
+       select ename,job,dname from emp cross join dept;
+
+  2)inner join
+              select only the matching records
+              requires a valid join conditions
+              join conditions is based on the common columns
+              common columns share the same data set
+              column names may be different.
+
+select ename,job,dname from emp join dept
+  on (emp.deptno=dept.deptno);
+
+select e.ename,e.job,d.dname,d.deptno from emp e join dept.d
+  ->on(e.deptno=d.deptno);
+
+select e.ename,e.job,d.dname,deptno from emp e join dept d
+  ->using(deptno);
+
+*column used in the using must not have a qualifer
+
+3)equi join
+          same as inner join
+          it uses only=operator
+          use where clause
+
+select e.ename,e.job,d.dname,d.deptno from emp e,dept d
+    where e.deptno=d.deptno;
+
+4)natural join:
+              automatically finds the common columns
+              common column names and data types must match.
+select e.ename,e.job,d.dname,d.deptno from emp e natural join dept d;
+
+5)non equi join:
+               used when no common column can be used to join
+               between ...and
+
+find the name,job,salary and grade of all employees
+
+select e.ename,e.job,e.sal,s.grade
+ from emp e,salgrade s
+ where e.sal between s.losal and s.hisal;
+
+find the name,job,salary,dname and grade of all employees
+
+  select e.ename,e.job,e.sal,d.dname,s.grade
+  from emp e,dept d,salgrade s
+  where e.deptno=d.deptno
+  and e.sal between s.losal and s.hisal;
+
+6)outer join:
+            select all the records of one table and matching records from the other table
+
+   i)right outer join:all the records from the right side table and only matched records from the left side table
+ select e.ename,e.job,d.dname,d.deptno
+ from emp e right outer join dept d
+ on(e.deptno=d.deptno);
+
+   ii)left outer join
+           all the records from the left side table and only matched records from the right side table
+
+select e.ename,e.job,d.dname,d.deptno
+ ->from emp e left outer join dept d
+ ->(e
+
+ display the employee name along with his manager's name.
+
+
+mysql>select e.ename as"worker"
+
+
+
+
+
+
+
+
+
+
+
+
+
+SET OPERATORS:
+             used to combine the result of two or more quries
+             no of columns and the data type of the columns in the first query must match
+             with the second query
+
+TYPES:
+      1)union : eliminate the duplicate records 
+
+ select deptno,job,sal from dept10
+->union
+->
+
+
+
+finds the depts and jobs common 
+
+    select all the values
+
+
+
+
+
+
+
+database objects
+         
+1)table(base object)
+2)index
+3)view
+4)procedure
+5)function
+6)trigger
+
+
+
+2)index : improve query performance (reduce the searching time)
+                  by default  the indexed values  will be arranged in ascending order
+                   degrades DML(update)
+                    occupy space
+
+non unique index : allows duplicate values (default)
+unique index : will not allow duplicate values.
+
+syntax:create index index_name on table_name(columnname)
+       create index ind_empno on copy_emp(empno);
+       create unique index ind_ename on copy_emp(ename);
+
+
+how to list the indexes for a table
+show indexes from table_name;
+
+to drop an index
+drop index ind_empno on copy__emp;
+
+
+
+7782 king
+
+7784
+7785
+7786
+8783
+
+
+
+
+
+
+
+views:
+      virtual table based on one or more tables or views
+      views will not have data of its own 
+      depend on base tables for data
+      reduces query compilation time
+      data hiding
+
+
+
+types views
+     1)simple view:
+                  based on a single table/view
+                  No functions and distinct keyword is used
+                  DML is possible
+
+how to create a view?
+             syntax:
+
+
+
+
+complex view:
+             based on two or more tables 
+             
+
+
+
+select  * from vu_output;
+
+  if the base table is dropped then all 
+
+
+transactions:
+  a single logical unit of operation in the database particularly DML which cannot be divided further
+
+
+ACID properties
+A->atomicity : all or nothing
+B->consistency : all transctions must read a consistent image
+C->isolation : a transtractions must be isolated from other transactions
+D->durability : data must be consistent even after any failure of system

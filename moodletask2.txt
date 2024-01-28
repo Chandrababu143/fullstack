@@ -1,0 +1,176 @@
+mysql> show databases;
++-------------------------------+
+| Database                      |
++-------------------------------+
+| busdetails                    |
+| college                       |
+| employee_details              |
+| hotel_management_organization |
+| information_schema            |
+| moodletask1                   |
+| mysql                         |
+| performance_schema            |
+| sakila                        |
+| sys                           |
+| world                         |
++-------------------------------+
+11 rows in set (0.01 sec)
+
+mysql> use moodletask1;
+Database changed
+mysql> show table
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
++-----------------------+
+| Tables_in_moodletask1 |
++-----------------------+
+| customer              |
+| order_detaila         |
+| player                |
++-----------------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from player;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| ram    |   28 |   125 |
+| charan |   25 |   173 |
+| ravan  |   20 |   152 |
++--------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into player values('shyam',25,120),('david',28,180);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from player;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| ram    |   28 |   125 |
+| charan |   25 |   173 |
+| ravan  |   20 |   152 |
+| shyam  |   25 |   120 |
+| david  |   28 |   180 |
++--------+------+-------+
+6 rows in set (0.00 sec)
+
+mysql> update player set age=30 where name='shyam';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from player;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| ram    |   28 |   125 |
+| charan |   25 |   173 |
+| ravan  |   20 |   152 |
+| shyam  |   30 |   120 |
+| david  |   28 |   180 |
++--------+------+-------+
+6 rows in set (0.00 sec)
+
+mysql> delete from player where name='david';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from player;
++--------+------+-------+
+| name   | age  | score |
++--------+------+-------+
+| raj    |   26 |   120 |
+| ram    |   28 |   125 |
+| charan |   25 |   173 |
+| ravan  |   20 |   152 |
+| shyam  |   30 |   120 |
++--------+------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table player add strike_rate int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from player;
++--------+------+-------+-------------+
+| name   | age  | score | strike_rate |
++--------+------+-------+-------------+
+| raj    |   26 |   120 |        NULL |
+| ram    |   28 |   125 |        NULL |
+| charan |   25 |   173 |        NULL |
+| ravan  |   20 |   152 |        NULL |
+| shyam  |   30 |   120 |        NULL |
++--------+------+-------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> update player add strike_rate=0 ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'add strike_rate=0' at line 1
+mysql> update player add strike_rate=0 where name='raj';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'add strike_rate=0 where name='raj'' at line 1
+mysql> update player set strike_rate=0 ;
+Query OK, 5 rows affected (0.01 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from player;
++--------+------+-------+-------------+
+| name   | age  | score | strike_rate |
++--------+------+-------+-------------+
+| raj    |   26 |   120 |           0 |
+| ram    |   28 |   125 |           0 |
+| charan |   25 |   173 |           0 |
+| ravan  |   20 |   152 |           0 |
+| shyam  |   30 |   120 |           0 |
++--------+------+-------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select name,age from player;
++--------+------+
+| name   | age  |
++--------+------+
+| raj    |   26 |
+| ram    |   28 |
+| charan |   25 |
+| ravan  |   20 |
+| shyam  |   30 |
++--------+------+
+5 rows in set (0.00 sec)
+
+mysql> alter table player rename name to full_name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to full_name' at line 1
+mysql> desc player;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| name        | varchar(200) | YES  |     | NULL    |       |
+| age         | int          | YES  |     | NULL    |       |
+| score       | int          | YES  |     | NULL    |       |
+| strike_rate | int          | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table player rename column name to full_name;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from player;
++-----------+------+-------+-------------+
+| full_name | age  | score | strike_rate |
++-----------+------+-------+-------------+
+| raj       |   26 |   120 |           0 |
+| ram       |   28 |   125 |           0 |
+| charan    |   25 |   173 |           0 |
+| ravan     |   20 |   152 |           0 |
+| shyam     |   30 |   120 |           0 |
++-----------+------+-------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> drop table player;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from player;
+ERROR 1146 (42S02): Table 'moodletask1.player' doesn't exist
+mysql> notee

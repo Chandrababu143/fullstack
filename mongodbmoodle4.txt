@@ -1,0 +1,230 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 653d436f5197af8674b33e00
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2
+Using MongoDB:          7.0.2
+Using Mongosh:          2.0.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-10-20T11:42:08.686+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use sample
+switched to db sample
+sample> db.product.find()
+\[
+  {
+    _id: 1,
+    product_id: 1,
+    product_name: 'mobile',
+    price: 200000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 2,
+    product_id: 2,
+    product_name: 'mobile',
+    price: 100000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-18T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 3,
+    product_id: 3,
+    product_name: 'mobile',
+    price: 10000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-19T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 4,
+    product_id: 4,
+    product_name: 'mobile',
+    price: 200000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-20T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 5,
+    product_id: 5,
+    product_name: 'mobile',
+    price: 500000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-05T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 6,
+    product_id: 6,
+    product_name: 'mobile',
+    price: 250000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-25T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 7,
+    product_id: 7,
+    product_name: 'laptop',
+    price: 200000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 8,
+    product_id: 8,
+    product_name: 'laptop',
+    price: 1200000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 9,
+    product_id: 9,
+    product_name: 'laptop',
+    price: 290000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-09-17T00:00:00.000Z") }
+  },
+  {
+    _id: 10,
+    product_id: 10,
+    product_name: 'laptop',
+    price: 1200000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-07-10T00:00:00.000Z") }
+  },
+  {
+    _id: 11,
+    product_id: 11,
+    product_name: 'laptop',
+    price: 210000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-08-11T00:00:00.000Z") }
+  },
+  {
+    _id: 12,
+    product_id: 12,
+    product_name: 'laptop',
+    price: 400000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-12-12T00:00:00.000Z") }
+  }
+]
+sample> db.product.find({product_name:"mobile"})
+[
+  {
+    _id: 1,
+    product_id: 1,
+    product_name: 'mobile',
+    price: 200000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 2,
+    product_id: 2,
+    product_name: 'mobile',
+    price: 100000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-18T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 3,
+    product_id: 3,
+    product_name: 'mobile',
+    price: 10000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-19T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 4,
+    product_id: 4,
+    product_name: 'mobile',
+    price: 200000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-20T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 5,
+    product_id: 5,
+    product_name: 'mobile',
+    price: 500000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-05T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 6,
+    product_id: 6,
+    product_name: 'mobile',
+    price: 250000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-25T00:00:00.000Z")
+    }
+  }
+]
+sample> db.product.aggregate([{$group:{_id:"$company.name"}}])
+[ { _id: 'apple' }, { _id: 'aser' } ]
+sample> db.product.aggregate([{$group:{_id:"$company.name","total price":{$ssample> db.product.aggregate([{$group:{_id:"$company.name","total price":{$sum
+... ;
+Uncaught:
+SyntaxError: Unexpected token, expected "," (2:0)
+
+  1 | db.product.aggregate([{$group:{_id:"$company.name","total price":{$sum> 2 | ;
+    | ^
+  3 |
+
+sample>  db.product.aggregate([{$group:{_id:"$company.name","total price":{$$sum:"$price"}}}])
+[
+  { _id: 'apple', 'total price': 1260000 },
+  { _id: 'aser', 'total price': 3500000 }
+]
+sample>  db.product.aggregate([{$group:{_id:"$company.name","total price":{$sample>  db.product.aggregate([{$group:{_id:"$company.name","total price":{$}}}])$price"},"average price":{$avg:"$price"
+[
+  { _id: 'apple', 'total price': 1260000, 'average price': 210000 },
+  {
+    _id: 'aser',
+    'total price': 3500000,
+    'average price': 583333.3333333334
+  }
+]
+sample> db.product.aggregate([{$group:{_id:"$company.name"}},{$sort:{companycompany_name:1}}])
+[ { _id: 'apple' }, { _id: 'aser' } ]
+sample>

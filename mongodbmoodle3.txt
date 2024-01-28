@@ -1,0 +1,1364 @@
+lease enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 653d36f0ecba5b978b42a477
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2
+Using MongoDB:          7.0.2
+Using Mongosh:          2.0.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-10-20T11:42:08.686+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use sample
+switched to db sample
+sample> db.student.find({$and:[{m1:{gt:40}},{m2:{gt:40}},{m3:{gt:40}}]})
+
+sample> db.student.find({$and:[{m1:{$gt:40}},{m2:{$gt:40}},{m3:{$gt:40}}]})
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64b"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64c"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64d"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64e"),
+    name: 'mahesh',
+    course: 'full stack',
+    m1: 82,
+    m2: 97,
+    m3: 87,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/08/2002',
+      mobile_number: 9876543213,
+      email_id: 'magesh@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64f"),
+    name: 'kamal',
+    course: 'full stack',
+    m1: 53,
+    m2: 54,
+    m3: 55,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/01/2002',
+      mobile_number: 9876543214,
+      email_id: 'kamal@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb651"),
+    name: 'praveen',
+    course: 'B.E cse',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '17/12/2002',
+      mobile_number: 9876543298,
+      email_id: 'praveenkumar@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb652"),
+    name: 'sachin',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '06/05/2002',
+      mobile_number: 9876543654,
+      email_id: 'sachin@gmail.com',
+      address: 'mumbai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb653"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb654"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb655"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  }
+]
+sample> db.student.find({$and:[{m1:{$lt:40}},{m2:{$lt:40}},{m3:{$lt:40}}]},{_id:0,name:1,course:1)
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:89)
+
+> 1 | db.student.find({$and:[{m1:{$lt:40}},{m2:{$lt:40}},{m3:{$lt:40}}]},{_id:0,name:1,course:1)
+    |
+                   ^
+  2 |
+
+sample> db.student.find({$and:[{m1:{$lt:40}},{m2:{$lt:40}},{m3:{$lt:40}}]},{_id:0,name:1,course:1})
+[ { name: 'vijay', course: 'full stack' } ]
+sample> db.student.find({$or:[{m1:{$lt:40}},{m2:{$lt:40}},{m3:{$lt:40}]},{_id:0,name:1,course:1})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:62)
+
+> 1 | db.student.find({$or:[{m1:{$lt:40}},{m2:{$lt:40}},{m3:{$lt:40}]},{_id:0,name:1,course:1})
+    |                                                               ^
+  2 |
+
+sample> db.student.find({$or:[{m1:{$lt:40}},{m2:{$lt:40}},{m3:{$lt:40}}]},{_id:0,name:1,course:1})
+[ { name: 'vijay', course: 'full stack' } ]
+sample> db.student.find({subjects:{$in:["html","mongodb"]}})
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64b"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64c"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64d"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64e"),
+    name: 'mahesh',
+    course: 'full stack',
+    m1: 82,
+    m2: 97,
+    m3: 87,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/08/2002',
+      mobile_number: 9876543213,
+      email_id: 'magesh@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64f"),
+    name: 'kamal',
+    course: 'full stack',
+    m1: 53,
+    m2: 54,
+    m3: 55,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/01/2002',
+      mobile_number: 9876543214,
+      email_id: 'kamal@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb650"),
+    name: 'vijay',
+    course: 'full stack',
+    m1: 22,
+    m2: 33,
+    m3: 23,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '19/04/2002',
+      mobile_number: 9876543215,
+      email_id: 'vijay@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb651"),
+    name: 'praveen',
+    course: 'B.E cse',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '17/12/2002',
+      mobile_number: 9876543298,
+      email_id: 'praveenkumar@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb652"),
+    name: 'sachin',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '06/05/2002',
+      mobile_number: 9876543654,
+      email_id: 'sachin@gmail.com',
+      address: 'mumbai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb653"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb654"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb655"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  }
+]
+sample> db.student.find({"personal.age":{$lt:21}})
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64b"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64c"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64d"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64e"),
+    name: 'mahesh',
+    course: 'full stack',
+    m1: 82,
+    m2: 97,
+    m3: 87,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/08/2002',
+      mobile_number: 9876543213,
+      email_id: 'magesh@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64f"),
+    name: 'kamal',
+    course: 'full stack',
+    m1: 53,
+    m2: 54,
+    m3: 55,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/01/2002',
+      mobile_number: 9876543214,
+      email_id: 'kamal@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb650"),
+    name: 'vijay',
+    course: 'full stack',
+    m1: 22,
+    m2: 33,
+    m3: 23,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '19/04/2002',
+      mobile_number: 9876543215,
+      email_id: 'vijay@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb651"),
+    name: 'praveen',
+    course: 'B.E cse',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '17/12/2002',
+      mobile_number: 9876543298,
+      email_id: 'praveenkumar@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb652"),
+    name: 'sachin',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '06/05/2002',
+      mobile_number: 9876543654,
+      email_id: 'sachin@gmail.com',
+      address: 'mumbai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb653"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb654"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb655"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  }
+]
+sample> db.student.find().pretty(),limit(2)
+ReferenceError: limit is not defined
+sample> db.student.find().pretty().limit(2)
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64b"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64c"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  }
+]
+sample> db.student.find().pretty().sort({name:1})
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64f"),
+    name: 'kamal',
+    course: 'full stack',
+    m1: 53,
+    m2: 54,
+    m3: 55,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/01/2002',
+      mobile_number: 9876543214,
+      email_id: 'kamal@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64c"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb654"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64e"),
+    name: 'mahesh',
+    course: 'full stack',
+    m1: 82,
+    m2: 97,
+    m3: 87,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/08/2002',
+      mobile_number: 9876543213,
+      email_id: 'magesh@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64b"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb651"),
+    name: 'praveen',
+    course: 'B.E cse',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '17/12/2002',
+      mobile_number: 9876543298,
+      email_id: 'praveenkumar@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb653"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64d"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb655"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb652"),
+    name: 'sachin',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '06/05/2002',
+      mobile_number: 9876543654,
+      email_id: 'sachin@gmail.com',
+      address: 'mumbai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb650"),
+    name: 'vijay',
+    course: 'full stack',
+    m1: 22,
+    m2: 33,
+    m3: 23,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '19/04/2002',
+      mobile_number: 9876543215,
+      email_id: 'vijay@gmail.com',
+      address: 'chennai'
+    }
+  }
+]
+sample> db.student.find().pretty().sort({name:-1})
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb650"),
+    name: 'vijay',
+    course: 'full stack',
+    m1: 22,
+    m2: 33,
+    m3: 23,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '19/04/2002',
+      mobile_number: 9876543215,
+      email_id: 'vijay@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb652"),
+    name: 'sachin',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '06/05/2002',
+      mobile_number: 9876543654,
+      email_id: 'sachin@gmail.com',
+      address: 'mumbai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64d"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb655"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64b"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb651"),
+    name: 'praveen',
+    course: 'B.E cse',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '17/12/2002',
+      mobile_number: 9876543298,
+      email_id: 'praveenkumar@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb653"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64e"),
+    name: 'mahesh',
+    course: 'full stack',
+    m1: 82,
+    m2: 97,
+    m3: 87,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/08/2002',
+      mobile_number: 9876543213,
+      email_id: 'magesh@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64c"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb654"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64f"),
+    name: 'kamal',
+    course: 'full stack',
+    m1: 53,
+    m2: 54,
+    m3: 55,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/01/2002',
+      mobile_number: 9876543214,
+      email_id: 'kamal@gmail.com',
+      address: 'chennai'
+    }
+  }
+]
+sample> db.student.find().pretty().sort({dob:-1})
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64b"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64c"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64d"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64e"),
+    name: 'mahesh',
+    course: 'full stack',
+    m1: 82,
+    m2: 97,
+    m3: 87,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/08/2002',
+      mobile_number: 9876543213,
+      email_id: 'magesh@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64f"),
+    name: 'kamal',
+    course: 'full stack',
+    m1: 53,
+    m2: 54,
+    m3: 55,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/01/2002',
+      mobile_number: 9876543214,
+      email_id: 'kamal@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb650"),
+    name: 'vijay',
+    course: 'full stack',
+    m1: 22,
+    m2: 33,
+    m3: 23,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '19/04/2002',
+      mobile_number: 9876543215,
+      email_id: 'vijay@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb651"),
+    name: 'praveen',
+    course: 'B.E cse',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '17/12/2002',
+      mobile_number: 9876543298,
+      email_id: 'praveenkumar@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb652"),
+    name: 'sachin',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '06/05/2002',
+      mobile_number: 9876543654,
+      email_id: 'sachin@gmail.com',
+      address: 'mumbai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb653"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb654"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb655"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  }
+]
+sample> db.student.find().pretty().sort({dob:1})
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64b"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64c"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64d"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64e"),
+    name: 'mahesh',
+    course: 'full stack',
+    m1: 82,
+    m2: 97,
+    m3: 87,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/08/2002',
+      mobile_number: 9876543213,
+      email_id: 'magesh@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64f"),
+    name: 'kamal',
+    course: 'full stack',
+    m1: 53,
+    m2: 54,
+    m3: 55,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/01/2002',
+      mobile_number: 9876543214,
+      email_id: 'kamal@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb650"),
+    name: 'vijay',
+    course: 'full stack',
+    m1: 22,
+    m2: 33,
+    m3: 23,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '19/04/2002',
+      mobile_number: 9876543215,
+      email_id: 'vijay@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb651"),
+    name: 'praveen',
+    course: 'B.E cse',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '17/12/2002',
+      mobile_number: 9876543298,
+      email_id: 'praveenkumar@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb652"),
+    name: 'sachin',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '06/05/2002',
+      mobile_number: 9876543654,
+      email_id: 'sachin@gmail.com',
+      address: 'mumbai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb653"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb654"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb655"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  }
+]
+sample> db.student.find().pretty().limit(3).skip(2)
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64d"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64e"),
+    name: 'mahesh',
+    course: 'full stack',
+    m1: 82,
+    m2: 97,
+    m3: 87,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/08/2002',
+      mobile_number: 9876543213,
+      email_id: 'magesh@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64f"),
+    name: 'kamal',
+    course: 'full stack',
+    m1: 53,
+    m2: 54,
+    m3: 55,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/01/2002',
+      mobile_number: 9876543214,
+      email_id: 'kamal@gmail.com',
+      address: 'chennai'
+    }
+  }
+]

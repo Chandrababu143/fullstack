@@ -1,0 +1,173 @@
+mysql> use moodletask1;
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_moodletask1 |
++-----------------------+
+| customer              |
+| order_detaila         |
++-----------------------+
+2 rows in set (0.01 sec)
+
+mysql> create table marks(rollno int primary key,name varchar(50),mark1 int,mark2 int);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> insert into marks values(1,'ram',80,85),(2,'ravi',75,70),(3,'ragul',88,75),(4,'ragu',66,88),(5,'ramesh',87,67);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> alter table marks add total int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table marks add dob date;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table marks rename dob to dateofbirth;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to dateofbirth' at line 1
+mysql> alter table marks rename column dob to dateofbirth;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc marks;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| rollno      | int         | NO   | PRI | NULL    |       |
+| name        | varchar(50) | YES  |     | NULL    |       |
+| mark1       | int         | YES  |     | NULL    |       |
+| mark2       | int         | YES  |     | NULL    |       |
+| total       | int         | YES  |     | NULL    |       |
+| dateofbirth | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> select * from marks;
++--------+--------+-------+-------+-------+-------------+
+| rollno | name   | mark1 | mark2 | total | dateofbirth |
++--------+--------+-------+-------+-------+-------------+
+|      1 | ram    |    80 |    85 |  NULL | NULL        |
+|      2 | ravi   |    75 |    70 |  NULL | NULL        |
+|      3 | ragul  |    88 |    75 |  NULL | NULL        |
+|      4 | ragu   |    66 |    88 |  NULL | NULL        |
+|      5 | ramesh |    87 |    67 |  NULL | NULL        |
++--------+--------+-------+-------+-------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> update marks set total=mark1+mark2;
+Query OK, 5 rows affected (0.01 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from marks;
++--------+--------+-------+-------+-------+-------------+
+| rollno | name   | mark1 | mark2 | total | dateofbirth |
++--------+--------+-------+-------+-------+-------------+
+|      1 | ram    |    80 |    85 |   165 | NULL        |
+|      2 | ravi   |    75 |    70 |   145 | NULL        |
+|      3 | ragul  |    88 |    75 |   163 | NULL        |
+|      4 | ragu   |    66 |    88 |   154 | NULL        |
+|      5 | ramesh |    87 |    67 |   154 | NULL        |
++--------+--------+-------+-------+-------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> delete from marks where rollno=4; 
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from marks;
++--------+--------+-------+-------+-------+-------------+
+| rollno | name   | mark1 | mark2 | total | dateofbirth |
++--------+--------+-------+-------+-------+-------------+
+|      1 | ram    |    80 |    85 |   165 | NULL        |
+|      2 | ravi   |    75 |    70 |   145 | NULL        |
+|      3 | ragul  |    88 |    75 |   163 | NULL        |
+|      5 | ramesh |    87 |    67 |   154 | NULL        |
++--------+--------+-------+-------+-------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table marks add average float,grade char(1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'grade char(1)' at line 1
+mysql> alter table marks add average int,grade char(1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'grade char(1)' at line 1
+mysql> alter table marks add average int,grade char();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'grade char()' at line 1
+mysql> alter table marks add average int,grade char;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'grade char' at line 1
+mysql> alter table marks add average int,grade varchar(1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'grade varchar(1)' at line 1
+mysql> alter table marks add average int,add grade varchar(1);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from marks;
++--------+--------+-------+-------+-------+-------------+---------+-------+
+| rollno | name   | mark1 | mark2 | total | dateofbirth | average | grade |
++--------+--------+-------+-------+-------+-------------+---------+-------+
+|      1 | ram    |    80 |    85 |   165 | NULL        |    NULL | NULL  |
+|      2 | ravi   |    75 |    70 |   145 | NULL        |    NULL | NULL  |
+|      3 | ragul  |    88 |    75 |   163 | NULL        |    NULL | NULL  |
+|      5 | ramesh |    87 |    67 |   154 | NULL        |    NULL | NULL  |
++--------+--------+-------+-------+-------+-------------+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> update marks set average=total/3;
+Query OK, 4 rows affected (0.01 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> select * from marks;
++--------+--------+-------+-------+-------+-------------+---------+-------+
+| rollno | name   | mark1 | mark2 | total | dateofbirth | average | grade |
++--------+--------+-------+-------+-------+-------------+---------+-------+
+|      1 | ram    |    80 |    85 |   165 | NULL        |      55 | NULL  |
+|      2 | ravi   |    75 |    70 |   145 | NULL        |      48 | NULL  |
+|      3 | ragul  |    88 |    75 |   163 | NULL        |      54 | NULL  |
+|      5 | ramesh |    87 |    67 |   154 | NULL        |      51 | NULL  |
++--------+--------+-------+-------+-------+-------------+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> update marks set average=total/2;
+Query OK, 4 rows affected (0.00 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> select * from marks;
++--------+--------+-------+-------+-------+-------------+---------+-------+
+| rollno | name   | mark1 | mark2 | total | dateofbirth | average | grade |
++--------+--------+-------+-------+-------+-------------+---------+-------+
+|      1 | ram    |    80 |    85 |   165 | NULL        |      83 | NULL  |
+|      2 | ravi   |    75 |    70 |   145 | NULL        |      73 | NULL  |
+|      3 | ragul  |    88 |    75 |   163 | NULL        |      82 | NULL  |
+|      5 | ramesh |    87 |    67 |   154 | NULL        |      77 | NULL  |
++--------+--------+-------+-------+-------+-------------+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> update marks set grade='p'
+    -> where mark1>40 and mark2>40
+    -> ;
+Query OK, 4 rows affected (0.01 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> update marks set grade='f'
+    -> where mark1<40 and mark2<40
+    -> ;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from marks;
++--------+--------+-------+-------+-------+-------------+---------+-------+
+| rollno | name   | mark1 | mark2 | total | dateofbirth | average | grade |
++--------+--------+-------+-------+-------+-------------+---------+-------+
+|      1 | ram    |    80 |    85 |   165 | NULL        |      83 | p     |
+|      2 | ravi   |    75 |    70 |   145 | NULL        |      73 | p     |
+|      3 | ragul  |    88 |    75 |   163 | NULL        |      82 | p     |
+|      5 | ramesh |    87 |    67 |   154 | NULL        |      77 | p     |
++--------+--------+-------+-------+-------+-------------+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table marks drop column average;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> truncate table marks;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> notee;

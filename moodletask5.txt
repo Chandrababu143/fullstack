@@ -1,0 +1,380 @@
+mysql> show databases
+    -> ;
++-------------------------------+
+| Database                      |
++-------------------------------+
+| busdetails                    |
+| college                       |
+| e_commerce                    |
+| employee_details              |
+| hotel_management_organization |
+| information_schema            |
+| moodletask1                   |
+| mysql                         |
+| performance_schema            |
+| sakila                        |
+| sys                           |
+| world                         |
++-------------------------------+
+12 rows in set (0.01 sec)
+
+mysql> use employee_details;
+Database changed
+mysql> select database();
++------------------+
+| database()       |
++------------------+
+| employee_details |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp
+    -> ;
++-------+--------+-----------+------+------------+---------+---------+--------+---------------------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno | emailid             |
++-------+--------+-----------+------+------------+---------+---------+--------+---------------------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 | SMITERK@kggroup.com |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | ALLEMAN@kggroup.com |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | WARDMAN@kggroup.com |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | JONEGER@kggroup.com |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | MARTMAN@kggroup.com |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | BLAKGER@kggroup.com |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | CLARGER@kggroup.com |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | SCOTYST@kggroup.com |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | KINGENT@kggroup.com |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | TURNMAN@kggroup.com |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | ADAMERK@kggroup.com |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 | JAMEERK@kggroup.com |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | FORDYST@kggroup.com |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | MILLERK@kggroup.com |
++-------+--------+-----------+------+------------+---------+---------+--------+---------------------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp
+    -> where hire date not between '1980-06-30' and '1980-12-31';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'date not between '1980-06-30' and '1980-12-31'' at line 2
+mysql> select * from emp
+    -> where hiredate not between '1980-06-30' and '1980-12-31';
++-------+--------+-----------+------+------------+---------+---------+--------+---------------------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno | emailid             |
++-------+--------+-----------+------+------------+---------+---------+--------+---------------------+
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | ALLEMAN@kggroup.com |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | WARDMAN@kggroup.com |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | JONEGER@kggroup.com |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | MARTMAN@kggroup.com |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | BLAKGER@kggroup.com |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | CLARGER@kggroup.com |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | SCOTYST@kggroup.com |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | KINGENT@kggroup.com |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | TURNMAN@kggroup.com |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | ADAMERK@kggroup.com |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 | JAMEERK@kggroup.com |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | FORDYST@kggroup.com |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | MILLERK@kggroup.com |
++-------+--------+-----------+------+------------+---------+---------+--------+---------------------+
+13 rows in set (0.00 sec)
+
+mysql> select current_user();
++----------------+
+| current_user() |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select ename from emp
+    -> where (deptno=10 or deptno=20) and (job='clerk' or job='salesman' or job='analyst);
+    '> ;
+    '> '
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+mysql> select ename from emp
+    -> where (deptno=10 or deptno=20) and (job='clerk' or job='salesman' or job='analyst');
++--------+
+| ename  |
++--------+
+| SMITH  |
+| SCOTT  |
+| ADAMS  |
+| FORD   |
+| MILLER |
++--------+
+5 rows in set (0.00 sec)
+
+mysql> select ename from emp
+    -> where ename like 's%';
++-------+
+| ename |
++-------+
+| SMITH |
+| SCOTT |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> select ename from emp
+    -> where ename like '%n';
++--------+
+| ename  |
++--------+
+| ALLEN  |
+| MARTIN |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select ename from emp
+    -> where ename like '_a%';
++--------+
+| ename  |
++--------+
+| WARD   |
+| MARTIN |
+| JAMES  |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
++----------------------------+
+| Tables_in_employee_details |
++----------------------------+
+| dept                       |
+| emp                        |
++----------------------------+
+2 rows in set (0.02 sec)
+
+mysql> show tables();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> select distint job from emp;
+ERROR 1054 (42S22): Unknown column 'distint' in 'field list'
+mysql> select distinct job from emp;
++-----------+
+| job       |
++-----------+
+| CLERK     |
+| SALESMAN  |
+| MANAGER   |
+| ANALYST   |
+| PRESIDENT |
++-----------+
+5 rows in set (0.01 sec)
+
+mysql> select ename from emp
+    -> where (job not in 'salesman')or (job not in 'clerk')or (job not in 'analyst);
+    '> '
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''salesman')or (job not in 'clerk')or (job not in 'analyst);
+'' at line 2
+mysql> select ename from emp
+    -> where (job not in 'salesman')or (job not in 'clerk')or (job not in 'analyst');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''salesman')or (job not in 'clerk')or (job not in 'analyst')' at line 2
+mysql> select ename from emp
+    -> where job not in ('salesman','clerk','analyst');
++-------+
+| ename |
++-------+
+| JONES |
+| BLAKE |
+| CLARK |
+| KING  |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select ename,sal from emp order by sal desc;
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| KING   | 5000.00 |
+| SCOTT  | 3000.00 |
+| FORD   | 3000.00 |
+| JONES  | 2975.00 |
+| BLAKE  | 2850.00 |
+| CLARK  | 2450.00 |
+| ALLEN  | 1600.00 |
+| TURNER | 1500.00 |
+| MILLER | 1300.00 |
+| WARD   | 1250.00 |
+| MARTIN | 1250.00 |
+| ADAMS  | 1100.00 |
+| JAMES  |  950.00 |
+| SMITH  |  800.00 |
++--------+---------+
+14 rows in set (0.00 sec)
+
+mysql> select ename,job,sal,sal+sal*15/100 as new salary from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'salary from emp' at line 1
+mysql> select ename,job,sal,(sal+sal*15/100) as newsalary from emp;
++--------+-----------+---------+-------------+
+| ename  | job       | sal     | newsalary   |
++--------+-----------+---------+-------------+
+| SMITH  | CLERK     |  800.00 |  920.000000 |
+| ALLEN  | SALESMAN  | 1600.00 | 1840.000000 |
+| WARD   | SALESMAN  | 1250.00 | 1437.500000 |
+| JONES  | MANAGER   | 2975.00 | 3421.250000 |
+| MARTIN | SALESMAN  | 1250.00 | 1437.500000 |
+| BLAKE  | MANAGER   | 2850.00 | 3277.500000 |
+| CLARK  | MANAGER   | 2450.00 | 2817.500000 |
+| SCOTT  | ANALYST   | 3000.00 | 3450.000000 |
+| KING   | PRESIDENT | 5000.00 | 5750.000000 |
+| TURNER | SALESMAN  | 1500.00 | 1725.000000 |
+| ADAMS  | CLERK     | 1100.00 | 1265.000000 |
+| JAMES  | CLERK     |  950.00 | 1092.500000 |
+| FORD   | ANALYST   | 3000.00 | 3450.000000 |
+| MILLER | CLERK     | 1300.00 | 1495.000000 |
++--------+-----------+---------+-------------+
+14 rows in set (0.00 sec)
+
+mysql> select ename,job,sal,sal+(sal*15/100) as newsalary from emp;
++--------+-----------+---------+-------------+
+| ename  | job       | sal     | newsalary   |
++--------+-----------+---------+-------------+
+| SMITH  | CLERK     |  800.00 |  920.000000 |
+| ALLEN  | SALESMAN  | 1600.00 | 1840.000000 |
+| WARD   | SALESMAN  | 1250.00 | 1437.500000 |
+| JONES  | MANAGER   | 2975.00 | 3421.250000 |
+| MARTIN | SALESMAN  | 1250.00 | 1437.500000 |
+| BLAKE  | MANAGER   | 2850.00 | 3277.500000 |
+| CLARK  | MANAGER   | 2450.00 | 2817.500000 |
+| SCOTT  | ANALYST   | 3000.00 | 3450.000000 |
+| KING   | PRESIDENT | 5000.00 | 5750.000000 |
+| TURNER | SALESMAN  | 1500.00 | 1725.000000 |
+| ADAMS  | CLERK     | 1100.00 | 1265.000000 |
+| JAMES  | CLERK     |  950.00 | 1092.500000 |
+| FORD   | ANALYST   | 3000.00 | 3450.000000 |
+| MILLER | CLERK     | 1300.00 | 1495.000000 |
++--------+-----------+---------+-------------+
+14 rows in set (0.00 sec)
+
+mysql> select ename from emp
+    -> where ename like '%ll%';
++--------+
+| ename  |
++--------+
+| ALLEN  |
+| MILLER |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select ename from emp
+    -> where ename like '___a%';
+Empty set (0.00 sec)
+
+mysql> select ename,job,sal from emp 
+    -> where sal not between 2000 and 3000;
++--------+-----------+---------+
+| ename  | job       | sal     |
++--------+-----------+---------+
+| SMITH  | CLERK     |  800.00 |
+| ALLEN  | SALESMAN  | 1600.00 |
+| WARD   | SALESMAN  | 1250.00 |
+| MARTIN | SALESMAN  | 1250.00 |
+| KING   | PRESIDENT | 5000.00 |
+| TURNER | SALESMAN  | 1500.00 |
+| ADAMS  | CLERK     | 1100.00 |
+| JAMES  | CLERK     |  950.00 |
+| MILLER | CLERK     | 1300.00 |
++--------+-----------+---------+
+9 rows in set (0.00 sec)
+
+mysql> select empno,job,hiredate from emp
+    -> where mgr is null;
++-------+-----------+------------+
+| empno | job       | hiredate   |
++-------+-----------+------------+
+|  7839 | PRESIDENT | 1981-11-17 |
++-------+-----------+------------+
+1 row in set (0.00 sec)
+
+mysql> select ename,hiredate from emp
+    -> where hiredate='1981%';
+ERROR 1525 (HY000): Incorrect DATE value: '1981%'
+mysql> select ename,hiredate from emp
+    -> where year(hiredate)='1981';
++--------+------------+
+| ename  | hiredate   |
++--------+------------+
+| ALLEN  | 1981-02-20 |
+| WARD   | 1981-02-22 |
+| JONES  | 1981-04-02 |
+| MARTIN | 1981-09-28 |
+| BLAKE  | 1981-05-01 |
+| CLARK  | 1981-06-09 |
+| KING   | 1981-11-17 |
+| TURNER | 1981-09-08 |
+| JAMES  | 1981-12-03 |
+| FORD   | 1981-12-03 |
++--------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select ename,hiredate from emp
+    -> where year(hiredate)=1981 and month(hiredate)<=6;
++-------+------------+
+| ename | hiredate   |
++-------+------------+
+| ALLEN | 1981-02-20 |
+| WARD  | 1981-02-22 |
+| JONES | 1981-04-02 |
+| BLAKE | 1981-05-01 |
+| CLARK | 1981-06-09 |
++-------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select concat(ename 'earns' sal 'but wants' sal*3) from emp 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sal 'but wants' sal*3) from emp' at line 1
+mysql> select concat(ename 'earns' sal 'but wants' (sal*3)) from emp ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sal 'but wants' (sal*3)) from emp' at line 1
+mysql> select concat(ename 'earns' sal 'but wants' (sal*3));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sal 'but wants' (sal*3))' at line 1
+mysql> select concat(ename, 'earns', sal, 'but wants', (sal*3)) from emp ;
++---------------------------------------------------+
+| concat(ename, 'earns', sal, 'but wants', (sal*3)) |
++---------------------------------------------------+
+| SMITHearns800.00but wants2400.00                  |
+| ALLENearns1600.00but wants4800.00                 |
+| WARDearns1250.00but wants3750.00                  |
+| JONESearns2975.00but wants8925.00                 |
+| MARTINearns1250.00but wants3750.00                |
+| BLAKEearns2850.00but wants8550.00                 |
+| CLARKearns2450.00but wants7350.00                 |
+| SCOTTearns3000.00but wants9000.00                 |
+| KINGearns5000.00but wants15000.00                 |
+| TURNERearns1500.00but wants4500.00                |
+| ADAMSearns1100.00but wants3300.00                 |
+| JAMESearns950.00but wants2850.00                  |
+| FORDearns3000.00but wants9000.00                  |
+| MILLERearns1300.00but wants3900.00                |
++---------------------------------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select concat(ename, ' earns ', sal, ' but wants ', (sal*3)) from emp ;
++-------------------------------------------------------+
+| concat(ename, ' earns ', sal, ' but wants ', (sal*3)) |
++-------------------------------------------------------+
+| SMITH earns 800.00 but wants 2400.00                  |
+| ALLEN earns 1600.00 but wants 4800.00                 |
+| WARD earns 1250.00 but wants 3750.00                  |
+| JONES earns 2975.00 but wants 8925.00                 |
+| MARTIN earns 1250.00 but wants 3750.00                |
+| BLAKE earns 2850.00 but wants 8550.00                 |
+| CLARK earns 2450.00 but wants 7350.00                 |
+| SCOTT earns 3000.00 but wants 9000.00                 |
+| KING earns 5000.00 but wants 15000.00                 |
+| TURNER earns 1500.00 but wants 4500.00                |
+| ADAMS earns 1100.00 but wants 3300.00                 |
+| JAMES earns 950.00 but wants 2850.00                  |
+| FORD earns 3000.00 but wants 9000.00                  |
+| MILLER earns 1300.00 but wants 3900.00                |
++-------------------------------------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp
+    -> where monthname(hiredate)='may';
++-------+-------+---------+------+------------+---------+------+--------+---------------------+
+| empno | ename | job     | mgr  | hiredate   | sal     | comm | deptno | emailid             |
++-------+-------+---------+------+------------+---------+------+--------+---------------------+
+|  7698 | BLAKE | MANAGER | 7839 | 1981-05-01 | 2850.00 | NULL |     30 | BLAKGER@kggroup.com |
++-------+-------+---------+------+------------+---------+------+--------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> notee

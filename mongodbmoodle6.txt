@@ -1,0 +1,332 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 653fa5f8fbf345ceaf0b4354
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2
+Using MongoDB:          7.0.2
+Using Mongosh:          2.0.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-10-30T12:06:04.053+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use sample
+switched to db sample
+sample> db.createCollection("customer_details");
+{ ok: 1 }
+sample> db.customer_details.insertOne({ name: "Tony",addresses: [{ street: "sample> db.customer_details.insertOne({ name: "Tony",addresses: [{ street: "sample> db.customer_details.insertOne({ name: "Tony",addresses: [{ street: "123 Main St", city: "City1", state: "State1", postalCode: "12345" }, { street: "456 Elm St", city: "City2", state: "State2", postalCode: "67890" },{ street: "789 Oak St", city: "City3", state: "State3", postalCode: "54321" }]});
+
+{
+  acknowledged: true,
+  insertedId: ObjectId("653fa660fbf345ceaf0b4355")
+}
+sample> db.customer_details.insertMany([{ name: "Aravind",addresses: [{ stresample> db.customer_details.insertMany([{ name: "Aravind",addresses: [{ street: "765 Main St", city: "Covai", state: "Tamilnadu", postalCode: "641048" }, { street: "456 Elm St", city: "Bangalore", state: "Karnataka", postalCode: "67890" },{ street: "789 Oak St", city: "Jaipur", state: "Rajasthan", postalCode: "54321" }]},{ name: "Karthick",addresses: [{ street: "123 Main St", city: "Salem", state: "Tamilnadu", postalCode: "12345" }, { street: "456 Elm St", city: "Hosur", state: "Tamilnadu", postalCode: "67890" },{ street: "789
+ Oak St", city: "Chennai", state: "Tamilnadu", postalCode: "54321" }]}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("653fa679fbf345ceaf0b4356"),
+    '1': ObjectId("653fa679fbf345ceaf0b4357")
+  }
+}
+sample> db.customer_details.find()
+[
+  {
+    _id: ObjectId("653fa660fbf345ceaf0b4355"),
+    name: 'Tony',
+    addresses: [
+      {
+        street: '123 Main St',
+        city: 'City1',
+        state: 'State1',
+        postalCode: '12345'
+      },
+      {
+        street: '456 Elm St',
+        city: 'City2',
+        state: 'State2',
+        postalCode: '67890'
+      },
+      {
+        street: '789 Oak St',
+        city: 'City3',
+        state: 'State3',
+        postalCode: '54321'
+      }
+    ]
+  },
+  {
+    _id: ObjectId("653fa679fbf345ceaf0b4356"),
+    name: 'Aravind',
+    addresses: [
+      {
+        street: '765 Main St',
+        city: 'Covai',
+        state: 'Tamilnadu',
+        postalCode: '641048'
+      },
+      {
+        street: '456 Elm St',
+        city: 'Bangalore',
+        state: 'Karnataka',
+        postalCode: '67890'
+      },
+      {
+        street: '789 Oak St',
+        city: 'Jaipur',
+        state: 'Rajasthan',
+        postalCode: '54321'
+      }
+    ]
+  },
+  {
+    _id: ObjectId("653fa679fbf345ceaf0b4357"),
+    name: 'Karthick',
+    addresses: [
+      {
+        street: '123 Main St',
+        city: 'Salem',
+        state: 'Tamilnadu',
+        postalCode: '12345'
+      },
+      {
+        street: '456 Elm St',
+        city: 'Hosur',
+        state: 'Tamilnadu',
+        postalCode: '67890'
+      },
+      {
+        street: '789 Oak St',
+        city: 'Chennai',
+        state: 'Tamilnadu',
+        postalCode: '54321'
+      }
+    ]
+  }
+]
+sample> db.customer_details.updateMany({name:"Aravind",name:"Karthick"},{$pusample> db.customer_details.updateMany({name:"Aravind",name:"Karthick"},{$push:{addresses:{$each:[{ street: "345 Main St", city: "Erode", state: "Tamilnadu", postalCode: "12345" }, { street: "456 Elm St", city: "Trichy", state: "Tamilnadu", postalCode: "67890" }]}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+sample> db.customer_details.find()
+[
+  {
+    _id: ObjectId("653fa660fbf345ceaf0b4355"),
+    name: 'Tony',
+    addresses: [
+      {
+        street: '123 Main St',
+        city: 'City1',
+        state: 'State1',
+        postalCode: '12345'
+      },
+      {
+        street: '456 Elm St',
+        city: 'City2',
+        state: 'State2',
+        postalCode: '67890'
+      },
+      {
+        street: '789 Oak St',
+        city: 'City3',
+        state: 'State3',
+        postalCode: '54321'
+      }
+    ]
+  },
+  {
+    _id: ObjectId("653fa679fbf345ceaf0b4356"),
+    name: 'Aravind',
+    addresses: [
+      {
+        street: '765 Main St',
+        city: 'Covai',
+        state: 'Tamilnadu',
+        postalCode: '641048'
+      },
+      {
+        street: '456 Elm St',
+        city: 'Bangalore',
+        state: 'Karnataka',
+        postalCode: '67890'
+      },
+      {
+        street: '789 Oak St',
+        city: 'Jaipur',
+        state: 'Rajasthan',
+        postalCode: '54321'
+      }
+    ]
+  },
+  {
+    _id: ObjectId("653fa679fbf345ceaf0b4357"),
+    name: 'Karthick',
+    addresses: [
+      {
+        street: '123 Main St',
+        city: 'Salem',
+        state: 'Tamilnadu',
+        postalCode: '12345'
+      },
+      {
+        street: '456 Elm St',
+        city: 'Hosur',
+        state: 'Tamilnadu',
+        postalCode: '67890'
+      },
+      {
+        street: '789 Oak St',
+        city: 'Chennai',
+        state: 'Tamilnadu',
+        postalCode: '54321'
+      },
+      {
+        street: '345 Main St',
+        city: 'Erode',
+        state: 'Tamilnadu',
+        postalCode: '12345'
+      },
+      {
+        street: '456 Elm St',
+        city: 'Trichy',
+        state: 'Tamilnadu',
+        postalCode: '67890'
+      }
+    ]
+  }
+]
+sample> db.customer_details.updateMany({name:"Aravind"},{$push:{addresses:{$each:[{ street: "345 Main St", city: "Erode", state: "Tamilnadu", postalCode: "12345" }, { street: "456 Elm St", city: "Trichy", state: "Tamilnadu", postalCode: "67890" }]}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+sample> db.customer_details.find()
+[
+  {
+    _id: ObjectId("653fa660fbf345ceaf0b4355"),
+    name: 'Tony',
+    addresses: [
+      {
+        street: '123 Main St',
+        city: 'City1',
+        state: 'State1',
+        postalCode: '12345'
+      },
+      {
+        street: '456 Elm St',
+        city: 'City2',
+        state: 'State2',
+        postalCode: '67890'
+      },
+      {
+        street: '789 Oak St',
+        city: 'City3',
+        state: 'State3',
+        postalCode: '54321'
+      }
+    ]
+  },
+  {
+    _id: ObjectId("653fa679fbf345ceaf0b4356"),
+    name: 'Aravind',
+    addresses: [
+      {
+        street: '765 Main St',
+        city: 'Covai',
+        state: 'Tamilnadu',
+        postalCode: '641048'
+      },
+      {
+        street: '456 Elm St',
+        city: 'Bangalore',
+        state: 'Karnataka',
+        postalCode: '67890'
+      },
+      {
+        street: '789 Oak St',
+        city: 'Jaipur',
+        state: 'Rajasthan',
+        postalCode: '54321'
+      },
+      {
+        street: '345 Main St',
+        city: 'Erode',
+        state: 'Tamilnadu',
+        postalCode: '12345'
+      },
+      {
+        street: '456 Elm St',
+        city: 'Trichy',
+        state: 'Tamilnadu',
+        postalCode: '67890'
+      }
+    ]
+  },
+  {
+    _id: ObjectId("653fa679fbf345ceaf0b4357"),
+    name: 'Karthick',
+    addresses: [
+      {
+        street: '123 Main St',
+        city: 'Salem',
+        state: 'Tamilnadu',
+        postalCode: '12345'
+      },
+      {
+        street: '456 Elm St',
+        city: 'Hosur',
+        state: 'Tamilnadu',
+        postalCode: '67890'
+      },
+      {
+        street: '789 Oak St',
+        city: 'Chennai',
+        state: 'Tamilnadu',
+        postalCode: '54321'
+      },
+      {
+        street: '345 Main St',
+        city: 'Erode',
+        state: 'Tamilnadu',
+        postalCode: '12345'
+      },
+      {
+        street: '456 Elm St',
+        city: 'Trichy',
+        state: 'Tamilnadu',
+        postalCode: '67890'
+      }
+    ]
+  }
+]
+sample> db.customer_details.updateOne({name:"Karthick"},{$pull:{addresses:{street: "789 Oak St", city: "Chennai", state: "Tamilnadu", postalCode: "54321"}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+sample> db.customer_details.updateMany({},{$set:{Discount:"Aadi Sales"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+sample> db.customer_details.remove({name:"Tony"})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+sample> db.customer_details.drop()
+true
+sample>

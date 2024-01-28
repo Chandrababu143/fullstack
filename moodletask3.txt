@@ -1,0 +1,138 @@
+mysql> show databases;
++-------------------------------+
+| Database                      |
++-------------------------------+
+| busdetails                    |
+| college                       |
+| employee_details              |
+| hotel_management_organization |
+| information_schema            |
+| moodletask1                   |
+| mysql                         |
+| performance_schema            |
+| sakila                        |
+| sys                           |
+| world                         |
++-------------------------------+
+11 rows in set (0.01 sec)
+
+mysql> create database e_commerce;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use e_commerce;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| e_commerce |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table product(name varchar(255),category varchar(255),price int,brand varchar(255),rating float);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into product values('black shirt','clothing',900,'puma',4.8),( 'blue jeans','clothing','1000','puma',5.8),('bourbon','biscates',50,'cates',2.0),('bourbon small','biscates',25,'cates',5.9),('bourbon with extra cookies','biscates',100,'cates',5.8),('chips','eatiable',100,'lays',10);
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * from products;
+ERROR 1146 (42S02): Table 'e_commerce.products' doesn't exist
+mysql> select * from product;
++----------------------------+----------+-------+-------+--------+
+| name                       | category | price | brand | rating |
++----------------------------+----------+-------+-------+--------+
+| black shirt                | clothing |   900 | puma  |    4.8 |
+| blue jeans                 | clothing |  1000 | puma  |    5.8 |
+| bourbon                    | biscates |    50 | cates |      2 |
+| bourbon small              | biscates |    25 | cates |    5.9 |
+| bourbon with extra cookies | biscates |   100 | cates |    5.8 |
+| chips                      | eatiable |   100 | lays  |     10 |
++----------------------------+----------+-------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from product
+    -> where brand='puma'
+    -> ;
++-------------+----------+-------+-------+--------+
+| name        | category | price | brand | rating |
++-------------+----------+-------+-------+--------+
+| black shirt | clothing |   900 | puma  |    4.8 |
+| blue jeans  | clothing |  1000 | puma  |    5.8 |
++-------------+----------+-------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from product
+    -> where name='%jeans'
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select * from product
+    -> where name like '%jeans'
+    -> ;
++------------+----------+-------+-------+--------+
+| name       | category | price | brand | rating |
++------------+----------+-------+-------+--------+
+| blue jeans | clothing |  1000 | puma  |    5.8 |
++------------+----------+-------+-------+--------+
+1 row in set (0.03 sec)
+
+mysql> select * from product
+    -> where name like 'bourbon %'
+    -> ;
++----------------------------+----------+-------+-------+--------+
+| name                       | category | price | brand | rating |
++----------------------------+----------+-------+-------+--------+
+| bourbon small              | biscates |    25 | cates |    5.9 |
+| bourbon with extra cookies | biscates |   100 | cates |    5.8 |
++----------------------------+----------+-------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from product
+    -> where name='chips'
+    -> ;
++-------+----------+-------+-------+--------+
+| name  | category | price | brand | rating |
++-------+----------+-------+-------+--------+
+| chips | eatiable |   100 | lays  |     10 |
++-------+----------+-------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from product
+    -> where length(name)=4;
+Empty set (0.00 sec)
+
+mysql> select * from product
+    -> where length(name)=4 and name like 'h__r_'
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select * from product
+    -> where price<=1000;
++----------------------------+----------+-------+-------+--------+
+| name                       | category | price | brand | rating |
++----------------------------+----------+-------+-------+--------+
+| black shirt                | clothing |   900 | puma  |    4.8 |
+| blue jeans                 | clothing |  1000 | puma  |    5.8 |
+| bourbon                    | biscates |    50 | cates |      2 |
+| bourbon small              | biscates |    25 | cates |    5.9 |
+| bourbon with extra cookies | biscates |   100 | cates |    5.8 |
+| chips                      | eatiable |   100 | lays  |     10 |
++----------------------------+----------+-------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from product
+    -> where rating>=4.0
+    -> ;
++----------------------------+----------+-------+-------+--------+
+| name                       | category | price | brand | rating |
++----------------------------+----------+-------+-------+--------+
+| black shirt                | clothing |   900 | puma  |    4.8 |
+| blue jeans                 | clothing |  1000 | puma  |    5.8 |
+| bourbon small              | biscates |    25 | cates |    5.9 |
+| bourbon with extra cookies | biscates |   100 | cates |    5.8 |
+| chips                      | eatiable |   100 | lays  |     10 |
++----------------------------+----------+-------+-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> notee;

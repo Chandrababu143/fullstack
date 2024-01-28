@@ -1,0 +1,110 @@
+SQL build in functions
+      piece of code used to perform particular task 
+      used to compute values
+      use to get customized reports
+      Accepts arguments as input and return an output
+      arguments can be column names or user define values.
+      can change the data type in the output.
+      function can be nested.
+
+Types of functions
+    1)Single row function
+    2)Multiple row/group/aggregate functions
+
+
+single row functions
+       Act on each row that is selected and return one result per row.
+       can be nested to n level
+Types of single row functions
+      a)Character of functions
+      b)Number functions
+      c)date functions
+      d)conversion functions
+      e)General functions
+
+
+
+a)character functions
+          accept character values as input and return either character or number values as output
+types
+   i)lower:convert the given string to lower case
+           accept only one argument
+           syntax:lower('arg')
+Display the name and job of all employees in lower case
+select lower(ename),lower(job)from emp;
+
+
+Display your name in lowercase.
+select lower('PRAKASH');
+ii)Upper:convert the given string to upper case
+            accept only one argument
+            syntax:upper('arg')
+display your name in upper case
+select upper('prakash');
+
+iii) concat:joins two or more values
+            accept two or more arguments
+            syntax:concat(arg1,arg2,arg3....)
+select concat(ename,'is working as',job)from emp;
+
+iv)length:compute no of characters in the given string
+          accept only one argument
+          syntax:length(arg)
+select ename,length(ename)from emp;
+select length('prakash'),length('moses john prakash');
+
+v)substr:return a portion of the given string
+         accepts 3 arguments
+         syntax:substr(arg,m,n)
+         m-starting position
+         n->no of characters to be returned
+Display the first 3 characters in the name of all employees
+select ename,substr(ename,1,3)from emp;
+Display the last four characters in the name of all employees
+select ename,substr(ename,4,1)from emp
+ where substr(ename,4,1)='T';
+
+Note:single row function can be used in the select list,where clause.
+
+vi)instr:Display the postional value of the given character in the string
+          diplay only the first occurence
+          accept two arguments
+          syntax:instr(arg,'char')
+find the position A in the names of the employees
+select ename,instr(ename,'A')from emp;
+
+
+vii)Lpad/Rpad:Padding to the left or right
+              accepts three arguments
+              syntax:lpad(arg,n,'char')
+              n->total no of characters in the output 
+              char->padding character
+mysql>select sal,lpad(sal,10,'*')from emp;
+
+viii)replace:replace a substring with the given substring
+             accepts 3 arguments
+             syntax:replace(string,search substring,replace substring)
+select ename,replace(ename,'A','#')from emp;
+
+ix)trim:removes the leading/trailing/both spaces from the given string
+           accepts only one argument
+           select length(trim(' prakash '));
+           select length(trim(leading from' prakash '));
+           select(ltrim(' prakash '));
+
+x)repeat:repeat the string by no of times
+          accepts two arguments
+          syntax:repeat(arg,n)
+                 n-->no of times to be repeated
+select repeat(ename,3)from emp;
+
+
+
+
+Number functions
+   i)round:round of to the nearest decimal/value
+            accept two arguments
+syntax round(num,s)
+s->scaling
+select 748.629,round(748.629),round(748.629,0),round(748.629,1),round(748
+           

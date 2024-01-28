@@ -1,0 +1,142 @@
+MONGO DP:
+
+
+
+
+
+   Characteristics of big data:
+            4 vs of big data
+
+->volume : enormous size
+->velocity : speed of data generation 
+->variety : heterogeneous nature of nature.   
+                (posts in social media)
+->veracity : accuracy and quality of data.
+
+
+No SQL Database
+
+
+
+can you imagine using SQL to work with this volume of data?
+
+why should we use NO SQL database?
+
+     *  data generated at a very high speed need to be stored and processed efficiently.
+     *  data cannot be managed in using
+
+
+
+
+
+ADVANTAGES
+
+
+* Non relational and schema less data model.
+* Highly scalable.supports horizantal scaling.
+* Ability to handle change over time.
+* No reliance on SQL magic.
+* Less need for ETL.
+
+
+
+TYPES OF NOSQL DATABASE
+
+
+->Key value store:simple model to store values.
+       Ex:Redis,Dynomo,Raik etc.
+->Column-based:every column is treated separately
+       Ex:Hbase,Cassendra,Hypertable
+->Document oriented:stores and retrived data as key-value
+
+
+
+MONGODB
+
+
+* open source , cross platform document db
+* scalable and very flexible.
+* name derived from the word humongous means"huge and enormous".
+* it is nosql database developed by mongodb inc.
+* stores data in collection as JSON database
+
+
+RDBMS     VS       MONGODG
+
+Database           Database
+Table/relation     Collection
+Row/record         Document
+Column/attribute   
+
+
+Applications
+
+* E-commerce product catalogue
+* Big data
+* Content management
+* Social website
+
+
+
+
+test> db
+test
+test> show dbs
+
+
+b19fs> use b19fs
+
+
+
+b19fs> db.createCollection("mycol")
+b19fs> show collection
+b19fs> db.createCollection("cpcol",{capped:true,size:10000,max:5})
+{ok:1}
+
+b19fs> db.mycol.insertone({empno:7782,name:"ford",sallary:20000,deptno:30,job:"manager",hiredate:"12-10"})
+
+_id : objectid(
+
+
+b19fs> db.mycol.updatemany({},{$rename
+b18>use population
+
+type "it"for more
+population> db.cities.find({},{_id:0,name:1,continent:1,population:1}).pretty().sort({population:1}	
+
+population> db.cities.find({},{_id:0,name:1,continent:1,population:1}).pretty().sort({continent:1,population:-1})
+
+
+sselect * from emp
+where sal=(select max(sal)from emp);
+
+
+db.cities.find({},{_id:0,name:1,continent:1,population:1}).pretty().sort({population:-1}).limit(1)
+
+
+
+
+skipping the documents
+db.cities.find({}
+
+
+how to count the no of documents
+db.cities.countDocuments() 
+
+how to eleminate the duplicate document
+db.cities.distinct("continent")
+
+no of distinct document  
+db.cities.distinct("continent").length    
+
+diplay the last no of documents
+db.cities.find({},{_id:0,name:1,continent:1,population:1}).sort({population:-1}).skip
+
+
+
+
+
+
+
+
+

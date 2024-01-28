@@ -1,0 +1,98 @@
+mysql> select * from product
+    -> ;
++----------------------------+----------+-------+-------+--------+
+| name                       | category | price | brand | rating |
++----------------------------+----------+-------+-------+--------+
+| black shirt                | clothing |   900 | puma  |    4.8 |
+| blue jeans                 | clothing |  1000 | puma  |    5.8 |
+| bourbon                    | biscates |    50 | cates |      2 |
+| bourbon small              | biscates |    25 | cates |    5.9 |
+| bourbon with extra cookies | biscates |   100 | cates |    5.8 |
+| chips                      | eatiable |   100 | lays  |     10 |
++----------------------------+----------+-------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from product
+    -> where category='clothing' and price<700
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select * from product
+    -> where brand='denim' and rating>4.0
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select * from product
+    -> where price<=100 and rating>=4.0
+    -> ;
++----------------------------+----------+-------+-------+--------+
+| name                       | category | price | brand | rating |
++----------------------------+----------+-------+-------+--------+
+| bourbon small              | biscates |    25 | cates |    5.9 |
+| bourbon with extra cookies | biscates |   100 | cates |    5.8 |
+| chips                      | eatiable |   100 | lays  |     10 |
++----------------------------+----------+-------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from product
+    -> where brand='puma' and rating>3.6 and price<1000
+    -> ;
++-------------+----------+-------+-------+--------+
+| name        | category | price | brand | rating |
++-------------+----------+-------+-------+--------+
+| black shirt | clothing |   900 | puma  |    4.8 |
++-------------+----------+-------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from product
+    -> where name='puma' or name='denim' or name='nike'
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select * from product
+    -> where brand='puma' or brand='denim' or brand='nike'
+    -> ;
++-------------+----------+-------+-------+--------+
+| name        | category | price | brand | rating |
++-------------+----------+-------+-------+--------+
+| black shirt | clothing |   900 | puma  |    4.8 |
+| blue jeans  | clothing |  1000 | puma  |    5.8 |
++-------------+----------+-------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from product
+    -> where (brand='redmi' and rating>4.0)or(brand='oneplus')
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select * from product
+    -> where name like 'cake' and (brand='cadbury' or brand='britannia') and rating>4.0
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select * from product
+    -> where (brand='puma' and rating>3.5)or(brand='denim' and rating>4.0)
+    -> ;
++-------------+----------+-------+-------+--------+
+| name        | category | price | brand | rating |
++-------------+----------+-------+-------+--------+
+| black shirt | clothing |   900 | puma  |    4.8 |
+| blue jeans  | clothing |  1000 | puma  |    5.8 |
++-------------+----------+-------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from product
+    -> where (brand='puma' or brand='nike' or brand="levi's") and (name like
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> select * from product
+    -> where (brand='puma' or brand='nike' or brand="levi's") and (name like '%shirt%' and name like '%black%')
+    -> ;
++-------------+----------+-------+-------+--------+
+| name        | category | price | brand | rating |
++-------------+----------+-------+-------+--------+
+| black shirt | clothing |   900 | puma  |    4.8 |
++-------------+----------+-------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> notee

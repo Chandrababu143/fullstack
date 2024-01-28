@@ -1,0 +1,21 @@
+java platforms
+
+    java se standard edision
+    java ee enter price edision
+    java me micro edision
+    java FX 
+java.io 
+java.sql
+java.
+java.
+java.
+
+java ee 
+
+it is enter price platform that in mainly used to develops enter price application 
+
+java me 
+java dedicate to mobile application
+
+java FX 
+stands for special effects in java language it is used to develop rich internet application it uses a light weight user interface 

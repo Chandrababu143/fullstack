@@ -1,0 +1,1036 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 653fa2d81f05a2b6aefe2053
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2
+Using MongoDB:          7.0.2
+Using Mongosh:          2.0.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-10-30T12:06:04.053+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin     40.00 KiB
+config    72.00 KiB
+local     72.00 KiB
+mystore   80.00 KiB
+sample   240.00 KiB
+test> use sample
+switched to db sample
+sample> show collections
+customer
+order_det
+product
+student
+sample> db.student.find()
+[
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64b"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64c"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64d"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64e"),
+    name: 'mahesh',
+    course: 'full stack',
+    m1: 82,
+    m2: 97,
+    m3: 87,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/08/2002',
+      mobile_number: 9876543213,
+      email_id: 'magesh@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb64f"),
+    name: 'kamal',
+    course: 'full stack',
+    m1: 53,
+    m2: 54,
+    m3: 55,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/01/2002',
+      mobile_number: 9876543214,
+      email_id: 'kamal@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb650"),
+    name: 'vijay',
+    course: 'full stack',
+    m1: 22,
+    m2: 33,
+    m3: 23,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '19/04/2002',
+      mobile_number: 9876543215,
+      email_id: 'vijay@gmail.com',
+      address: 'chennai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb651"),
+    name: 'praveen',
+    course: 'B.E cse',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '17/12/2002',
+      mobile_number: 9876543298,
+      email_id: 'praveenkumar@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b0a015584c18e6cb652"),
+    name: 'sachin',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '06/05/2002',
+      mobile_number: 9876543654,
+      email_id: 'sachin@gmail.com',
+      address: 'mumbai'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb653"),
+    name: 'praveen',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/12/2002',
+      mobile_number: 9876543210,
+      email_id: 'praveen@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb654"),
+    name: 'kavin',
+    course: 'full stack',
+    m1: 89,
+    m2: 98,
+    m3: 95,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '11/12/2002',
+      mobile_number: 9876543211,
+      email_id: 'kavin@gmail.com',
+      address: 'erode'
+    }
+  },
+  {
+    _id: ObjectId("653d1b3f015584c18e6cb655"),
+    name: 'rahul',
+    course: 'full stack',
+    m1: 98,
+    m2: 97,
+    m3: 99,
+    subjects: [ 'html', 'css', 'mongodb' ],
+    personal: {
+      age: 20,
+      dob: '12/07/2002',
+      mobile_number: 9876543212,
+      email_id: 'rahul@gmail.com',
+      address: 'coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("653de5ca46aa383862a6fcc8"),
+    name: 'bala',
+    course: 'B.E ece',
+    m1: 20,
+    m2: 70,
+    m3: 40,
+    personel: { address: 'erode' }
+  },
+  { _id: ObjectId("653de60d137c33cd63b6a8f1"), name: 'bala' }
+]
+sample> db.product.find()
+[
+  {
+    _id: 1,
+    product_id: 1,
+    product_name: 'mobile',
+    price: 1500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 2,
+    product_id: 2,
+    product_name: 'mobile',
+    price: 1500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-18T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 3,
+    product_id: 3,
+    product_name: 'mobile',
+    price: 1500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-19T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 4,
+    product_id: 4,
+    product_name: 'mobile',
+    price: 1500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-20T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 5,
+    product_id: 5,
+    product_name: 'mobile',
+    price: 1500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-05T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 6,
+    product_id: 6,
+    product_name: 'mobile',
+    price: 1500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-25T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 7,
+    product_id: 7,
+    product_name: 'laptop',
+    price: 1500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 8,
+    product_id: 8,
+    product_name: 'laptop',
+    price: 1500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 9,
+    product_id: 9,
+    product_name: 'laptop',
+    price: 1500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-09-17T00:00:00.000Z") }
+  },
+  {
+    _id: 10,
+    product_id: 10,
+    product_name: 'laptop',
+    price: 1500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-07-10T00:00:00.000Z") }
+  },
+  {
+    _id: 11,
+    product_id: 11,
+    product_name: 'laptop',
+    price: 1500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-08-11T00:00:00.000Z") }
+  },
+  {
+    _id: 12,
+    product_id: 12,
+    product_name: 'laptop',
+    price: 1500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-12-12T00:00:00.000Z") }
+  }
+]
+sample> db.product.aggregate([{ $sort: { "company.name": 1 } }, { $group: {
+_id: "$product_name", products: { $push: "$$ROOT" } } }] )
+[
+  {
+    _id: 'laptop',
+    products: [
+      {
+        _id: 7,
+        product_id: 7,
+        product_name: 'laptop',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'aser',
+          purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 8,
+        product_id: 8,
+        product_name: 'laptop',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'aser',
+          purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 9,
+        product_id: 9,
+        product_name: 'laptop',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'aser',
+          purchasedate: ISODate("2023-09-17T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 10,
+        product_id: 10,
+        product_name: 'laptop',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'aser',
+          purchasedate: ISODate("2023-07-10T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 11,
+        product_id: 11,
+        product_name: 'laptop',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'aser',
+          purchasedate: ISODate("2023-08-11T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 12,
+        product_id: 12,
+        product_name: 'laptop',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'aser',
+          purchasedate: ISODate("2023-12-12T00:00:00.000Z")
+        }
+      }
+    ]
+  },
+  {
+    _id: 'mobile',
+    products: [
+      {
+        _id: 1,
+        product_id: 1,
+        product_name: 'mobile',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'apple',
+          purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 2,
+        product_id: 2,
+        product_name: 'mobile',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'apple',
+          purchasedate: ISODate("2023-05-18T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 3,
+        product_id: 3,
+        product_name: 'mobile',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'apple',
+          purchasedate: ISODate("2023-05-19T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 4,
+        product_id: 4,
+        product_name: 'mobile',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'apple',
+          purchasedate: ISODate("2023-05-20T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 5,
+        product_id: 5,
+        product_name: 'mobile',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'apple',
+          purchasedate: ISODate("2023-05-05T00:00:00.000Z")
+        }
+      },
+      {
+        _id: 6,
+        product_id: 6,
+        product_name: 'mobile',
+        price: 1500,
+        no_quantity: 1,
+        company: {
+          name: 'apple',
+          purchasedate: ISODate("2023-05-25T00:00:00.000Z")
+        }
+      }
+    ]
+  }
+]
+sample> db.student.findAndModify({query:{name:"Thiru",course:"Mechanical"},update:{$set:{"personal.address":"345 Main st,Los Angeles"}},upsert:true})
+null
+sample> db.student.findAndModify({query:{name:"bala"},update:{$set:{"personal.address":"erode"}},upsert:true})
+{
+  _id: ObjectId("653de5ca46aa383862a6fcc8"),
+  name: 'bala',
+  course: 'B.E ece',
+  m1: 20,
+  m2: 70,
+  m3: 40,
+  personel: { address: 'erode' }
+}
+sample> db.product.findAndModify({query:{product_id:3},update:{$set:{price:32999.99}},upsert:true})
+{
+  _id: 3,
+  product_id: 3,
+  product_name: 'mobile',
+  price: 1500,
+  no_quantity: 1,
+  company: { name: 'apple', purchasedate: ISODate("2023-05-19T00:00:00.000Z") }
+}
+sample> db.product.updateMany({},{$inc:{price:1500}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 12,
+  modifiedCount: 12,
+  upsertedCount: 0
+}
+sample> db.product.find()
+[
+  {
+    _id: 1,
+    product_id: 1,
+    product_name: 'mobile',
+    price: 3000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 2,
+    product_id: 2,
+    product_name: 'mobile',
+    price: 3000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-18T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 3,
+    product_id: 3,
+    product_name: 'mobile',
+    price: 34499.99,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-19T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 4,
+    product_id: 4,
+    product_name: 'mobile',
+    price: 3000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-20T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 5,
+    product_id: 5,
+    product_name: 'mobile',
+    price: 3000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-05T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 6,
+    product_id: 6,
+    product_name: 'mobile',
+    price: 3000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-25T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 7,
+    product_id: 7,
+    product_name: 'laptop',
+    price: 3000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 8,
+    product_id: 8,
+    product_name: 'laptop',
+    price: 3000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 9,
+    product_id: 9,
+    product_name: 'laptop',
+    price: 3000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-09-17T00:00:00.000Z") }
+  },
+  {
+    _id: 10,
+    product_id: 10,
+    product_name: 'laptop',
+    price: 3000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-07-10T00:00:00.000Z") }
+  },
+  {
+    _id: 11,
+    product_id: 11,
+    product_name: 'laptop',
+    price: 3000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-08-11T00:00:00.000Z") }
+  },
+  {
+    _id: 12,
+    product_id: 12,
+    product_name: 'laptop',
+    price: 3000,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-12-12T00:00:00.000Z") }
+  }
+]
+sample> db.product.updateMany({},{$inc:{price:1500}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 12,
+  modifiedCount: 12,
+  upsertedCount: 0
+}
+sample> db.product.find()
+[
+  {
+    _id: 1,
+    product_id: 1,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 2,
+    product_id: 2,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-18T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 3,
+    product_id: 3,
+    product_name: 'mobile',
+    price: 35999.99,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-19T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 4,
+    product_id: 4,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-20T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 5,
+    product_id: 5,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-05T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 6,
+    product_id: 6,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-25T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 7,
+    product_id: 7,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 8,
+    product_id: 8,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 9,
+    product_id: 9,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-09-17T00:00:00.000Z") }
+  },
+  {
+    _id: 10,
+    product_id: 10,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-07-10T00:00:00.000Z") }
+  },
+  {
+    _id: 11,
+    product_id: 11,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-08-11T00:00:00.000Z") }
+  },
+  {
+    _id: 12,
+    product_id: 12,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-12-12T00:00:00.000Z") }
+  }
+]
+sample> db.product.updateOne({product_id:3},{$min:{price:30000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+sample>  db.product.updateOne({product_id:7},{$max:{price:2000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+
+
+sample> db.product.updateOne({product_id:5},{$mul:{price:3}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+sample> db.product.find()
+[
+  {
+    _id: 1,
+    product_id: 1,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 2,
+    product_id: 2,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-18T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 3,
+    product_id: 3,
+    product_name: 'mobile',
+    price: 30000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-19T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 4,
+    product_id: 4,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-20T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 5,
+    product_id: 5,
+    product_name: 'mobile',
+    price: 13500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-05T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 6,
+    product_id: 6,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-25T00:00:00.000Z")
+    }
+  },
+  {
+    _id: 7,
+    product_id: 7,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 8,
+    product_id: 8,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+  },
+  {
+    _id: 9,
+    product_id: 9,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-09-17T00:00:00.000Z") }
+  },
+  {
+    _id: 10,
+    product_id: 10,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-07-10T00:00:00.000Z") }
+  },
+  {
+    _id: 11,
+    product_id: 11,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-08-11T00:00:00.000Z") }
+  },
+  {
+    _id: 12,
+    product_id: 12,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-12-12T00:00:00.000Z") }
+  }
+]
+sample> db.product.findAndModify({query:{product_id:5},update:{$set:{price:25789.60}},upsert:true})
+{
+  _id: 5,
+  product_id: 5,
+  product_name: 'mobile',
+  price: 13500,
+  no_quantity: 1,
+  company: { name: 'apple', purchasedate: ISODate("2023-05-05T00:00:00.000Z") }
+}
+sample> db.product.findAndModify({query:{product_id:7},update:{$set:{price:78000.23}},upsert:true})
+{
+  _id: 7,
+  product_id: 7,
+  product_name: 'laptop',
+  price: 4500,
+  no_quantity: 1,
+  company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") }
+}
+sample> db.product.updateMany({},{$rename:{"product_id":"proid"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 12,
+  modifiedCount: 12,
+  upsertedCount: 0
+}
+sample> db.product.find()
+[
+  {
+    _id: 1,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-17T00:00:00.000Z")
+    },
+    proid: 1
+  },
+  {
+    _id: 2,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-18T00:00:00.000Z")
+    },
+    proid: 2
+  },
+  {
+    _id: 3,
+    product_name: 'mobile',
+    price: 30000,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-19T00:00:00.000Z")
+    },
+    proid: 3
+  },
+  {
+    _id: 4,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-20T00:00:00.000Z")
+    },
+    proid: 4
+  },
+  {
+    _id: 5,
+    product_name: 'mobile',
+    price: 25789.6,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-05T00:00:00.000Z")
+    },
+    proid: 5
+  },
+  {
+    _id: 6,
+    product_name: 'mobile',
+    price: 4500,
+    no_quantity: 1,
+    company: {
+      name: 'apple',
+      purchasedate: ISODate("2023-05-25T00:00:00.000Z")
+    },
+    proid: 6
+  },
+  {
+    _id: 7,
+    product_name: 'laptop',
+    price: 78000.23,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") },
+    proid: 7
+  },
+  {
+    _id: 8,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-05-17T00:00:00.000Z") },
+    proid: 8
+  },
+  {
+    _id: 9,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-09-17T00:00:00.000Z") },
+    proid: 9
+  },
+  {
+    _id: 10,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-07-10T00:00:00.000Z") },
+    proid: 10
+  },
+  {
+    _id: 11,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-08-11T00:00:00.000Z") },
+    proid: 11
+  },
+  {
+    _id: 12,
+    product_name: 'laptop',
+    price: 4500,
+    no_quantity: 1,
+    company: { name: 'aser', purchasedate: ISODate("2023-12-12T00:00:00.000Z") },
+    proid: 12
+  }
+]
